@@ -10,17 +10,18 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f7f7;color:#222;min-height:100vh;padding-bottom:90px;overflow-x:hidden}
-#loader{position:fixed;inset:0;background:#f7f7f7;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s}
+#loader{position:fixed;inset:0;background:linear-gradient(180deg,#fff 0%,#f7f7f7 100%);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .5s}
 #loader.hide{opacity:0;pointer-events:none}
-.runner{width:120px;height:80px;position:relative}
-.runner svg{position:absolute;left:0;top:10px;animation:run 1.1s ease-in-out infinite}
-@keyframes run{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
-.load-bar{width:150px;height:8px;background:#eee;border-radius:6px;margin-top:20px;overflow:hidden;border:1.5px solid #222}
-.load-fill{height:100%;width:0;background:#222;animation:fill 1.5s ease forwards}
+.runner{width:140px;height:100px;position:relative}
+.runner svg{position:absolute;left:0;top:10px;animation:run 0.9s ease-in-out infinite}
+@keyframes run{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-14px) rotate(3deg)}}
+.load-bar{width:170px;height:10px;background:#eee;border-radius:6px;margin-top:24px;overflow:hidden;border:2px solid #222}
+.load-fill{height:100%;width:0;background:#222;animation:fill 1.6s ease forwards}
 @keyframes fill{to{width:100%}}
-.load-txt{margin-top:12px;font-size:12px;color:#888;letter-spacing:1px}
+.load-txt{margin-top:14px;font-size:13px;color:#666;letter-spacing:1px;font-weight:600}
+
 header{background:#fff;padding:16px 20px 12px;border-bottom:2px solid #222;position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px}
-.dog{width:44px;height:44px;flex-shrink:0}
+.dog{width:48px;height:48px;flex-shrink:0}
 header h1{font-size:18px;letter-spacing:1px}
 header p{font-size:11px;color:#888;margin-top:2px}
 .tabs{display:flex;margin:14px 14px 0;border:2px solid #222;border-radius:14px;overflow:hidden;box-shadow:3px 3px 0 #222;background:#fff}
@@ -60,7 +61,7 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .reco-item b{font-size:13px}
 .reco-item .p{margin-left:auto;color:#666;font-size:11px;white-space:nowrap}
 .dog-talk{display:flex;gap:10px;align-items:flex-end;margin:14px 14px 0}
-.dog-talk svg{width:46px;height:46px;flex-shrink:0}
+.dog-talk svg{width:52px;height:52px;flex-shrink:0}
 .bubble{background:#fff;border:2px solid #222;border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:12px;line-height:1.5;position:relative;flex:1;box-shadow:2px 2px 0 #ddd;color:#333}
 .entry{display:flex;gap:12px;margin:14px}
 .entry button{flex:1;border:2px solid #222;border-radius:18px;background:#fff;padding:24px 10px;font-family:inherit;cursor:pointer;box-shadow:3px 3px 0 #222;display:flex;flex-direction:column;align-items:center;gap:6px;transition:.15s}
@@ -80,7 +81,7 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .takeout .desc{font-size:11px;color:#777;line-height:1.6;margin-bottom:8px}
 .takeout .macros{display:flex;gap:8px;font-size:10px;color:#666;margin-bottom:8px;flex-wrap:wrap}
 .takeout .macros span{background:#f2f2f2;border-radius:8px;padding:3px 7px}
-.takeout .go{display:block;text-align:center;background:#222;color:#fff;border-radius:10px;padding:9px;font-size:12px;font-weight:800;text-decoration:none}
+.takeout .go{display:block;text-align:center;background:#222;color:#fff;border-radius:10px;padding:9px;font-size:12px;font-weight:800;text-decoration:none;border:none;width:100%;font-family:inherit;cursor:pointer}
 .takeout .go:active{opacity:.8}
 .upload{border:2px dashed #bbb;border-radius:14px;padding:22px 14px;text-align:center;cursor:pointer;background:#fafafa;margin-bottom:12px;transition:.15s;display:block}
 .upload:active{background:#f0f0f0}
@@ -95,9 +96,12 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .result .grid b{display:block;font-size:15px;color:#222;margin-top:2px}
 .result .note{font-size:10px;color:#999;margin-top:8px;line-height:1.5}
 .recipe{border:2px solid #222;border-radius:14px;padding:12px;margin-bottom:10px;background:#fff;box-shadow:2px 2px 0 #ddd}
-.recipe .top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.recipe .top{display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer}
 .recipe .name{font-size:14px;font-weight:800;flex:1}
 .recipe .kcal{font-size:11px;background:#222;color:#fff;border-radius:20px;padding:3px 9px;font-weight:700}
+.recipe .body{display:none}
+.recipe.open .body{display:block}
+.recipe .expand{font-size:11px;color:#999;text-align:center;padding-top:4px}
 .recipe .ings{font-size:11px;color:#666;line-height:1.7;margin-bottom:8px}
 .recipe .ings b{color:#222}
 .recipe .steps{font-size:11px;color:#555;line-height:1.7;border-top:1px dashed #ddd;padding-top:8px}
@@ -163,7 +167,7 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .weight-row .diff{font-size:10px;color:#888}
 .weight-row .diff.up{color:#c0392b}
 .weight-row .diff.down{color:#4a8f4a}
-.weight-row .act{color:#bbb;cursor:pointer;font-size:14px}
+.weight-row .act{color:#bbb;cursor:pointer;font-size:14px;padding:0 3px}
 .weight-row .act:active{color:#222}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
 .stat-box{border:2px solid #222;border-radius:12px;padding:9px 6px;text-align:center}
@@ -173,32 +177,58 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .bmi-normal{background:#e3f3e3;color:#3a7a3a}
 .bmi-low{background:#fff3cd;color:#8a6d00}
 .bmi-high{background:#fde3e3;color:#a33}
+.photo-preview{width:100%;max-height:180px;object-fit:cover;border-radius:12px;border:2px solid #222;margin-bottom:10px;display:none}
 </style>
 </head>
 <body>
 
 <div id="loader">
   <div class="runner">
-    <svg viewBox="0 0 120 80" width="120" height="80">
-      <rect x="30" y="52" width="7" height="18" rx="3" fill="#222"><animate attributeName="height" values="18;10;18" dur="0.5s" repeatCount="indefinite"/></rect>
-      <rect x="44" y="52" width="7" height="18" rx="3" fill="#222"><animate attributeName="height" values="10;18;10" dur="0.5s" repeatCount="indefinite"/></rect>
-      <rect x="76" y="52" width="7" height="18" rx="3" fill="#fff" stroke="#222" stroke-width="2"><animate attributeName="height" values="18;10;18" dur="0.5s" repeatCount="indefinite"/></rect>
-      <rect x="90" y="52" width="7" height="18" rx="3" fill="#fff" stroke="#222" stroke-width="2"><animate attributeName="height" values="10;18;10" dur="0.5s" repeatCount="indefinite"/></rect>
-      <ellipse cx="64" cy="44" rx="34" ry="17" fill="#fff" stroke="#222" stroke-width="3"/>
-      <path d="M64 27 a34 17 0 0 0 0 34 z" fill="#222"/>
-      <path d="M30 40 q-14 -6 -18 -16" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round">
-        <animate attributeName="d" values="M30 40 q-14 -6 -18 -16;M30 40 q-14 2 -20 -6;M30 40 q-14 -6 -18 -16" dur="0.5s" repeatCount="indefinite"/>
+    <svg viewBox="0 0 140 100" width="140" height="100">
+      <!-- 尾巴 -->
+      <path d="M22 42 Q6 32 4 16" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round">
+        <animate attributeName="d" values="M22 42 Q6 32 4 16;M22 42 Q4 38 -2 28;M22 42 Q6 32 4 16" dur="0.45s" repeatCount="indefinite"/>
       </path>
-      <circle cx="98" cy="30" r="15" fill="#fff" stroke="#222" stroke-width="3"/>
-      <path d="M98 15 a15 15 0 0 1 0 30 z" fill="#222"/>
-      <ellipse cx="90" cy="17" rx="5" ry="8" fill="#222" transform="rotate(-15 90 17)"/>
-      <circle cx="94" cy="28" r="2.3" fill="#fff"/>
-      <circle cx="103" cy="28" r="2.3" fill="#222"/>
-      <circle cx="108" cy="34" r="2.5" fill="#222"/>
+      <!-- 后腿 -->
+      <rect x="28" y="60" width="9" height="22" rx="4" fill="#222">
+        <animate attributeName="height" values="22;12;22" dur="0.45s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="44" y="60" width="9" height="22" rx="4" fill="#222">
+        <animate attributeName="height" values="12;22;12" dur="0.45s" repeatCount="indefinite"/>
+      </rect>
+      <!-- 前腿 -->
+      <rect x="86" y="60" width="9" height="22" rx="4" fill="#fff" stroke="#222" stroke-width="2.5">
+        <animate attributeName="height" values="22;12;22" dur="0.45s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="102" y="60" width="9" height="22" rx="4" fill="#fff" stroke="#222" stroke-width="2.5">
+        <animate attributeName="height" values="12;22;12" dur="0.45s" repeatCount="indefinite"/>
+      </rect>
+      <!-- 身体 -->
+      <ellipse cx="68" cy="52" rx="38" ry="20" fill="#fff" stroke="#222" stroke-width="3.5"/>
+      <path d="M68 32 a38 20 0 0 0 0 40 z" fill="#222"/>
+      <!-- 头 -->
+      <circle cx="114" cy="34" r="19" fill="#fff" stroke="#222" stroke-width="3.5"/>
+      <path d="M114 15 a19 19 0 0 1 0 38 z" fill="#222"/>
+      <!-- 耳朵（柔软下垂） -->
+      <ellipse cx="103" cy="18" rx="6" ry="11" fill="#222" transform="rotate(-20 103 18)"/>
+      <ellipse cx="124" cy="18" rx="6" ry="11" fill="#222" transform="rotate(20 124 18)"/>
+      <!-- 眼睛（大而圆） -->
+      <circle cx="107" cy="30" r="3.2" fill="#fff"/>
+      <circle cx="107" cy="30" r="1.8" fill="#222"/>
+      <circle cx="107" cy="29" r="0.7" fill="#fff"/>
+      <circle cx="121" cy="30" r="3.2" fill="#222"/>
+      <circle cx="121" cy="29" r="0.7" fill="#fff"/>
+      <!-- 鼻子 -->
+      <ellipse cx="126" cy="38" rx="3" ry="2.5" fill="#222"/>
+      <!-- 嘴 -->
+      <path d="M126 41 v3 M126 44 q-2.5 3 -5 1 M126 44 q2.5 3 5 1" stroke="#222" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <!-- 腮红 -->
+      <ellipse cx="103" cy="39" rx="4" ry="2.5" fill="#ffb3b3" opacity="0.7"/>
+      <ellipse cx="126" cy="39" rx="4" ry="2.5" fill="#ffb3b3" opacity="0.7"/>
     </svg>
   </div>
   <div class="load-bar"><div class="load-fill"></div></div>
-  <div class="load-txt">边牧正在准备你的餐桌…</div>
+  <div class="load-txt">🐾 边牧正在准备你的餐桌…</div>
 </div>
 
 <header>
@@ -207,10 +237,14 @@ header p{font-size:11px;color:#888;margin-top:2px}
     <ellipse cx="74" cy="34" rx="11" ry="17" fill="#222" transform="rotate(15 74 34)"/>
     <ellipse cx="50" cy="56" rx="30" ry="30" fill="#fff" stroke="#222" stroke-width="3"/>
     <path d="M50 26 a30 30 0 0 0 0 60 z" fill="#222"/>
-    <circle cx="38" cy="52" r="4.5" fill="#222"/>
-    <circle cx="62" cy="52" r="4.5" fill="#fff"/>
+    <circle cx="38" cy="52" r="5" fill="#222"/>
+    <circle cx="37" cy="50" r="1.6" fill="#fff"/>
+    <circle cx="62" cy="52" r="5" fill="#fff" stroke="#222" stroke-width="2"/>
+    <circle cx="62" cy="50" r="1.6" fill="#222"/>
     <ellipse cx="50" cy="68" rx="6" ry="4.5" fill="#222"/>
     <path d="M50 72 v4 M50 76 q-5 4 -9 0 M50 76 q5 4 9 0" stroke="#222" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="32" cy="64" rx="5" ry="3" fill="#ffb3b3" opacity="0.8"/>
+    <ellipse cx="68" cy="64" rx="5" ry="3" fill="#ffb3b3" opacity="0.8"/>
   </svg>
   <div>
     <h1>边牧饮食记录</h1>
@@ -233,10 +267,14 @@ header p{font-size:11px;color:#888;margin-top:2px}
       <ellipse cx="74" cy="34" rx="11" ry="17" fill="#222" transform="rotate(15 74 34)"/>
       <ellipse cx="50" cy="56" rx="30" ry="30" fill="#fff" stroke="#222" stroke-width="3"/>
       <path d="M50 26 a30 30 0 0 0 0 60 z" fill="#222"/>
-      <circle cx="38" cy="52" r="4.5" fill="#222"/>
-      <circle cx="62" cy="52" r="4.5" fill="#fff"/>
+      <circle cx="38" cy="52" r="5" fill="#222"/>
+      <circle cx="37" cy="50" r="1.6" fill="#fff"/>
+      <circle cx="62" cy="52" r="5" fill="#fff" stroke="#222" stroke-width="2"/>
+      <circle cx="62" cy="50" r="1.6" fill="#222"/>
       <ellipse cx="50" cy="68" rx="6" ry="4.5" fill="#222"/>
       <path d="M50 72 v4 M50 76 q-5 4 -9 0 M50 76 q5 4 9 0" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <ellipse cx="32" cy="64" rx="5" ry="3" fill="#ffb3b3" opacity="0.8"/>
+      <ellipse cx="68" cy="64" rx="5" ry="3" fill="#ffb3b3" opacity="0.8"/>
     </svg>
     <div class="bubble" id="dogMsg">今天也要好好吃饭汪！先选一个开始吧 🐾</div>
   </div>
@@ -297,7 +335,7 @@ header p{font-size:11px;color:#888;margin-top:2px}
   </div>
   <div class="card">
     <h2><span class="dot"></span>低卡外卖推荐</h2>
-    <p class="hint">按热量从低到高排序，点击可跳转美团搜索该餐品。</p>
+    <p class="hint">按热量从低到高排序，点击可跳转美团 App。</p>
     <div id="takeoutList"></div>
   </div>
 </div>
@@ -310,8 +348,8 @@ header p{font-size:11px;color:#888;margin-top:2px}
       <button onclick="addIng()">添加</button>
     </div>
     <div class="ing-tags" id="ingTags"></div>
-    <p class="hint">默认避开：葱、海鲜。一次可输入多个食材，用逗号/空格分隔。会拆成 1-5 道低脂菜。</p>
-    <button class="add-btn" style="width:100%;padding:11px" onclick="genRecipes()">🐾 生成低脂菜谱</button>
+    <p class="hint">默认避开：葱、海鲜。一次可输入多个，用逗号/空格分隔。</p>
+    <button class="add-btn" style="width:100%;padding:11px" onclick="genRecipes()">🐾 生成全部菜谱</button>
   </div>
   <div id="recipeList"></div>
 </div>
@@ -351,11 +389,11 @@ header p{font-size:11px;color:#888;margin-top:2px}
   <div class="card">
     <h2><span class="dot"></span>体重趋势</h2>
     <div class="chart" id="chart"><div class="no-data">还没有体重数据</div></div>
-    <p class="hint">根据体重变化自动提示调整每日热量目标。</p>
   </div>
   <div class="card">
     <h2><span class="dot"></span>体重记录</h2>
     <div id="weightList"><div class="empty">还没有记录</div></div>
+    <p class="hint" style="margin-top:10px">点 ✏️ 可修改已有记录</p>
   </div>
   <div class="card">
     <h2><span class="dot"></span>目标设定</h2>
@@ -363,7 +401,7 @@ header p{font-size:11px;color:#888;margin-top:2px}
       <input id="goalInput" type="number" inputmode="decimal" placeholder="目标体重 kg，如 52">
       <button onclick="saveGoal()">保存</button>
     </div>
-    <p class="hint">身高固定 160cm。当前热量目标 1000-1200 kcal、蛋白 70g。</p>
+    <p class="hint">身高固定 160cm。热量目标 1000-1200 kcal、蛋白 70g。</p>
   </div>
 </div>
 
@@ -375,7 +413,13 @@ header p{font-size:11px;color:#888;margin-top:2px}
 <div class="modal" id="modal">
   <div class="sheet">
     <h3 id="sheetTitle">添加食物</h3>
-    <input id="foodName" placeholder="食物名称，如：鸡蛋">
+    <input id="foodName" placeholder="输入食物名称，自动匹配营养" oninput="onFoodNameInput()">
+    <label class="upload" for="foodImg" style="padding:14px">
+      <div class="s">📷 添加照片（可选）</div>
+    </label>
+    <input type="file" id="foodImg" accept="image/*" style="display:none" onchange="onFoodImg(event)">
+    <img id="foodImgPreview" class="photo-preview">
+    <div class="quick" id="quick"></div>
     <div class="row2">
       <input id="foodKcal" type="number" inputmode="decimal" placeholder="热量 kcal">
       <input id="foodProtein" type="number" inputmode="decimal" placeholder="蛋白质 g">
@@ -385,7 +429,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
       <input id="foodFat" type="number" inputmode="decimal" placeholder="脂肪 g">
     </div>
     <input id="foodFiber" type="number" inputmode="decimal" placeholder="膳食纤维 g（可不填）">
-    <div class="quick" id="quick"></div>
     <div class="sheet-actions">
       <button class="ghost" onclick="closeSheet()">取消</button>
       <button class="solid" onclick="saveFood()">保存</button>
@@ -424,7 +467,10 @@ const FOOD_DB = {
   '青椒':{k:20,p:0.9,c:4.6,f:0.2,fi:1.7},'洋葱':{k:40,p:1.1,c:9,f:0.1,fi:1.7},
   '西葫芦':{k:17,p:1.2,c:3.1,f:0.3,fi:1},'南瓜':{k:26,p:1,c:6.5,f:0.1,fi:0.5},
   '木耳':{k:25,p:1.5,c:6,f:0.2,fi:2.6},'魔芋':{k:7,p:0.1,c:3,f:0,fi:2.7},
-  '橄榄油':{k:884,p:0,c:0,f:100,fi:0}
+  '橄榄油':{k:884,p:0,c:0,f:100,fi:0},
+  '鸡胸肉沙拉':{k:280,p:32,c:15,f:8,fi:6},
+  '番茄鸡蛋盖饭':{k:380,p:16,c:55,f:9,fi:3},
+  '米饭1碗':{k:230,p:4,c:50,f:0.5,fi:0.6}
 };
 
 const DISH_PRESET = {
@@ -446,8 +492,7 @@ const DISH_PRESET = {
   '炒':{k:320,p:16,c:22,f:18,fi:2,portion:250}
 };
 
-/* 忌口关键词：命中就自动跳过 */
-const AVOID_WORDS = ['葱','海鲜','蟹','鱼','贝','鱿鱼','生蚝','蛤','螺','扇贝','鲍鱼','海参','海带','紫菜','海苔'];
+const AVOID_WORDS = ['葱','海鲜','蟹','鱼','贝','鱿鱼','生蚝','蛤','螺','扇贝','鲍鱼','海参'];
 
 const TARGET = {kMin:1000, kMax:1200, p:70, c:130, f:35, fi:25};
 const MEALS = [
@@ -497,8 +542,10 @@ let weights = loadWeights();
 let goalWeight = parseFloat(localStorage.getItem('borderCollieGoalWeight')) || 52;
 let currentMeal = 'breakfast';
 let editRef = null;
+let editWeightIdx = -1;
 let currentLoc = localStorage.getItem('borderCollieLoc') || '';
 let ingList = [];
+let currentFoodImg = '';
 
 function todayKey(d){
   const x = d || new Date();
@@ -564,6 +611,7 @@ function totalsOfMeals(meals){
 function r1(x){ return Math.round(x*10)/10; }
 function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function findFood(name){
+  if(!name) return null;
   if(FOOD_DB[name]) return FOOD_DB[name];
   for(const k in FOOD_DB){
     if(name.includes(k) || k.includes(name)) return FOOD_DB[k];
@@ -616,6 +664,7 @@ function render(){
     if(items.length){
       itemsHTML = '<div class="meal-items">' + items.map((f,i)=>
         `<div class="row">
+           ${f.img?`<img src="${f.img}" style="width:32px;height:32px;object-fit:cover;border-radius:6px;border:1.5px solid #222">`:''}
            <span class="n">${esc(f.n)} <span class="macro">${Math.round(f.k||0)}kcal · ${f.p||0}P · ${f.c||0}C · ${f.f||0}F · ${f.fi||0}纤</span></span>
            <span class="act" onclick="editFood('${m.key}',${i})">✏️</span>
            <span class="act" onclick="delFood('${m.key}',${i})">✕</span>
@@ -674,17 +723,35 @@ function renderTakeout(){
   if(currentLoc){
     wrap.insertAdjacentHTML('beforeend', `<p class="hint">已结合位置「${esc(currentLoc)}」</p>`);
   }
-  list.forEach(t=>{
+  list.forEach((t,idx)=>{
     const low = t.k <= 350;
-    const url = 'https://i.meituan.com/search?keyword=' + encodeURIComponent(t.q + (currentLoc?' '+currentLoc:''));
     wrap.innerHTML += `
       <div class="takeout">
         <div class="top"><span class="name">${esc(t.n)}</span><span class="kcal ${low?'low':''}">${t.k} kcal</span></div>
         <div class="desc">${esc(t.d)}</div>
         <div class="macros"><span>蛋白 ${t.p}g</span><span>碳水 ${t.c}g</span><span>脂肪 ${t.f}g</span><span>纤维 ${t.fi}g</span></div>
-        <a class="go" href="${url}" target="_blank" rel="noopener">🛵 去美团看看</a>
+        <button class="go" onclick="openMeituan(${idx})">🛵 打开美团看看</button>
       </div>`;
   });
+}
+
+function openMeituan(idx){
+  const t = [...TAKEOUTS].sort((a,b)=>a.k-b.k)[idx];
+  const keyword = t.q + (currentLoc?' '+currentLoc:'');
+  const encoded = encodeURIComponent(keyword);
+  // 尝试唤起美团 App；1.5 秒后如果还在当前页，则回退到网页
+  const appUrl = `imeituan://www.meituan.com/search?keyword=${encoded}`;
+  const webUrl = `https://i.meituan.com/search?keyword=${encoded}`;
+  const start = Date.now();
+  const timer = setTimeout(()=>{
+    if(Date.now() - start < 1800){
+      window.location.href = webUrl;
+    }
+  }, 1500);
+  window.addEventListener('visibilitychange', ()=>{
+    if(document.hidden) clearTimeout(timer);
+  }, {once:true});
+  window.location.href = appUrl;
 }
 
 function useGPS(){
@@ -757,7 +824,7 @@ function onPickImage(e){
             <div>膳食纤维<b>${nutri.fi} g</b></div>
             <div>估算份量<b>${grams} g</b></div>
           </div>
-          <p class="note">⚠️ 营养值为本地数据库估算，仅供参考。可点下方按钮调整后记录。</p>
+          <p class="note">⚠️ 营养值为本地数据库估算，仅供参考。</p>
           <div class="sheet-actions" style="margin-top:12px">
             <button class="ghost" onclick="editDishResult('${esc(dishName.trim()).replace(/'/g,"&#39;")}',${nutri.k},${nutri.p},${nutri.c},${nutri.f},${nutri.fi})">✏️ 调整后记录</button>
           </div>
@@ -810,8 +877,7 @@ function editDishResult(name, k, p, c, f, fi){
   setTimeout(()=>{
     currentMeal = pickMealByTime();
     editRef = null;
-    const m = MEALS.find(x=>x.key===currentMeal);
-    document.getElementById('sheetTitle').textContent = '添加 · ' + m.name;
+    document.getElementById('sheetTitle').textContent = '添加 · ' + MEALS.find(x=>x.key===currentMeal).name;
     document.getElementById('foodName').value = name;
     document.getElementById('foodKcal').value = k;
     document.getElementById('foodProtein').value = p;
@@ -827,7 +893,6 @@ function editDishResult(name, k, p, c, f, fi){
 }
 
 /* ============ 做饭 ============ */
-/* 支持逗号/顿号/空格/换行拆分；自动过滤忌口 */
 function addIng(){
   const inp = document.getElementById('ingInput');
   const v = inp.value.trim();
@@ -853,28 +918,38 @@ function renderIngs(){
   ingList.forEach(n=>{ wrap.innerHTML += `<span class="ing-tag">${esc(n)}<span onclick="delIng('${esc(n)}')">✕</span></span>`; });
 }
 
+function toggleRecipe(idx){
+  const el = document.getElementById('recipe-'+idx);
+  if(el) el.classList.toggle('open');
+}
+
 function genRecipes(){
   if(ingList.length === 0){ alert('先添加至少一样食材吧～'); return; }
   const recipes = buildRecipes(ingList);
   const wrap = document.getElementById('recipeList');
-  wrap.innerHTML = `<p class="section-title">🐾 边牧为你搭配的低脂菜谱（${recipes.length} 道）</p>`;
+  wrap.innerHTML = `<p class="section-title">🐾 边牧为你搭配的菜谱（共 ${recipes.length} 道，点标题展开做法）</p>`;
   if(!recipes.length){
     wrap.innerHTML += '<div class="card"><div class="empty">暂时配不出合适的菜谱，再多加几样食材试试</div></div>';
     return;
   }
-  recipes.forEach(r=>{
+  recipes.forEach((r,idx)=>{
     wrap.innerHTML += `
-      <div class="recipe" style="margin:0 14px 12px">
-        <div class="top"><span class="name">${esc(r.name)}</span><span class="kcal">${r.k} kcal</span></div>
+      <div class="recipe" id="recipe-${idx}" style="margin:0 14px 12px">
+        <div class="top" onclick="toggleRecipe(${idx})">
+          <span class="name">${esc(r.name)}</span>
+          <span class="kcal">${r.k} kcal</span>
+        </div>
         <div class="macros"><span>蛋白 ${r.p}g</span><span>碳水 ${r.c}g</span><span>脂肪 ${r.f}g</span><span>纤维 ${r.fi}g</span></div>
-        <div class="ings"><b>用料：</b>${r.ings.map(i=>esc(i.n)+' '+i.g+'g').join('、')}</div>
-        <div class="steps">${r.steps.map((s,i)=>`${i+1}. ${esc(s)}`).join('<br>')}</div>
-        <button class="add-btn" style="margin-top:10px" onclick='quickAddRecipe(${JSON.stringify(r).replace(/'/g,"&#39;")})'>＋ 记入今日饮食</button>
+        <div class="expand">▼ 点击展开做法</div>
+        <div class="body">
+          <div class="ings"><b>用料：</b>${r.ings.map(i=>esc(i.n)+' '+i.g+'g').join('、')}</div>
+          <div class="steps">${r.steps.map((s,i)=>`${i+1}. ${esc(s)}`).join('<br>')}</div>
+          <button class="add-btn" style="margin-top:10px" onclick='quickAddRecipe(${JSON.stringify(r).replace(/'/g,"&#39;")})'>＋ 记入今日饮食</button>
+        </div>
       </div>`;
   });
 }
 
-/* 核心：按食材拆成 1-5 道菜，每道只用 1-3 种食材 */
 function buildRecipes(ings){
   const proteinKeys = ['鸡胸肉','鸡腿肉','鸡蛋','牛肉','猪瘦肉','豆腐','豆干','毛豆','鹰嘴豆','牛奶','无糖酸奶','蛋白粉'];
   const carbKeys    = ['燕麦','糙米','米饭','红薯','土豆','玉米','南瓜'];
@@ -888,12 +963,13 @@ function buildRecipes(ings){
 
   const out = [];
   const used = new Set();
+  const recipes = [];
 
-  // 1. 蛋白 + 一种蔬菜（主菜）
+  // 1. 主菜：蛋白1 + 蔬菜1
   const p1 = proteins[0];
-  const v1 = allVegs.find(v=>!used.has(v));
+  const v1 = allVegs[0];
   if(p1){
-    out.push(makeRecipe(`${p1}炒${v1||'时蔬'}`,
+    recipes.push(makeRecipe(`${p1}炒${v1||'时蔬'}`,
       v1 ? [{n:p1,g:120},{n:v1,g:150},{n:'橄榄油',g:5}]
          : [{n:p1,g:120},{n:'橄榄油',g:5}],
       ['食材洗净切块，肉提前用少许盐和黑胡椒腌10分钟',
@@ -903,62 +979,74 @@ function buildRecipes(ings){
     used.add(p1); if(v1) used.add(v1);
   }
 
-  // 2. 第二种蛋白做成沙拉
+  // 2. 主菜2：蛋白2 + 蔬菜2
   const p2 = proteins.find(p=>!used.has(p));
   const v2 = allVegs.find(v=>!used.has(v));
   if(p2){
-    out.push(makeRecipe(`${p2}轻食沙拉`,
-      v2 ? [{n:p2,g:100},{n:v2,g:120},{n:'无糖酸奶',g:30}]
-         : [{n:p2,g:100},{n:'无糖酸奶',g:30}],
-      ['蔬菜洗净撕成小块铺底',
-       `${p2}煮熟或煎熟后切块放在蔬菜上`,
-       '用无糖酸奶+少许盐+黑胡椒调成酱汁',
-       '淋上拌匀即可，不放葱']));
+    recipes.push(makeRecipe(`${p2}炒${v2||'时蔬'}`,
+      v2 ? [{n:p2,g:120},{n:v2,g:150},{n:'橄榄油',g:5}]
+         : [{n:p2,g:120},{n:'橄榄油',g:5}],
+      ['食材洗净切块',
+       '不粘锅少油煎熟',
+       v2 ? `加入${v2}翻炒` : '煎熟',
+       '撒盐和黑胡椒调味']));
     used.add(p2); if(v2) used.add(v2);
   }
 
-  // 3. 剩下的蔬菜清炒
+  // 3. 沙拉：蛋白3 + 蔬菜3
+  const p3 = proteins.find(p=>!used.has(p));
+  const v3 = allVegs.find(v=>!used.has(v));
+  if(p3){
+    recipes.push(makeRecipe(`${p3}轻食沙拉`,
+      v3 ? [{n:p3,g:100},{n:v3,g:120},{n:'无糖酸奶',g:30}]
+         : [{n:p3,g:100},{n:'无糖酸奶',g:30}],
+      ['蔬菜洗净撕成小块铺底',
+       `${p3}煮熟或煎熟后切块`,
+       '用无糖酸奶+盐+黑胡椒调酱',
+       '淋上拌匀即可']));
+    used.add(p3); if(v3) used.add(v3);
+  }
+
+  // 4. 蒸蛋（如果鸡蛋还没用）
+  if(!used.has('鸡蛋')){
+    recipes.push(makeRecipe('水蒸蛋',
+      [{n:'鸡蛋',g:100}],
+      ['鸡蛋打散加1.5倍温水',
+       '过筛去泡',
+       '盖保鲜膜蒸10-12分钟',
+       '出锅淋几滴生抽和香油']));
+    used.add('鸡蛋');
+  }
+
+  // 5. 剩下蔬菜两两清炒
   const vegLeft = allVegs.filter(v=>!used.has(v));
-  if(vegLeft.length >= 1){
-    const v3 = vegLeft[0];
-    const v4 = vegLeft[1];
-    out.push(makeRecipe(v4 ? `清炒${v3}${v4}` : `清炒${v3}`,
-      v4 ? [{n:v3,g:150},{n:v4,g:100},{n:'橄榄油',g:5}]
-         : [{n:v3,g:200},{n:'橄榄油',g:5}],
+  for(let i=0;i<vegLeft.length;i+=2){
+    const a = vegLeft[i];
+    const b = vegLeft[i+1];
+    recipes.push(makeRecipe(b ? `清炒${a}${b}` : `清炒${a}`,
+      b ? [{n:a,g:150},{n:b,g:100},{n:'橄榄油',g:5}]
+        : [{n:a,g:200},{n:'橄榄油',g:5}],
       ['蔬菜洗净切片',
        '不粘锅少油烧热',
        '下锅翻炒，加少量水焖2分钟',
-       '出锅前撒盐和黑胡椒调味（不放葱）']));
-    used.add(v3); if(v4) used.add(v4);
+       '出锅前撒盐调味']));
+    used.add(a); if(b) used.add(b);
   }
 
-  // 4. 主食
-  const c1 = carbs.find(c=>!used.has(c));
-  if(c1){
-    out.push(makeRecipe(`${c1}主食`,
-      [{n:c1,g:100}],
-      [`${c1}提前蒸熟/煮熟`,
+  // 6. 主食
+  carbs.forEach(c=>{
+    if(used.has(c)) return;
+    recipes.push(makeRecipe(`${c}主食`,
+      [{n:c,g:100}],
+      [`${c}提前蒸熟/煮熟`,
        '可以搭配上面的菜一起吃',
-       '分量控制在一小碗，避免碳水过多']));
-    used.add(c1);
-  }
+       '分量控制在一小碗']));
+    used.add(c);
+  });
 
-  // 5. 还有鸡蛋的话，蒸蛋
-  if(!used.has('鸡蛋') && !proteins.includes('鸡蛋')){
-    const v5 = allVegs.find(v=>!used.has(v));
-    out.push(makeRecipe(v5 ? `${v5}蒸蛋` : '水蒸蛋',
-      v5 ? [{n:'鸡蛋',g:100},{n:v5,g:80}] : [{n:'鸡蛋',g:100}],
-      ['鸡蛋打散加1.5倍温水，过筛去泡',
-       v5 ? `${v5}切碎放入蛋液` : '撇去浮沫',
-       '盖上保鲜膜蒸10-12分钟',
-       '出锅淋几滴生抽和香油']));
-    used.add('鸡蛋'); if(v5) used.add(v5);
-  }
-
-  return out
-    .filter(r=> r.k > 0 && r.k <= 550)
-    .sort((a,b)=>a.k-b.k)
-    .slice(0,5);
+  return recipes
+    .filter(r=> r.k > 0 && r.k <= 700)
+    .sort((a,b)=>a.k-b.k);
 }
 
 function makeRecipe(name, ingRows, steps){
@@ -987,33 +1075,87 @@ function pickMealByTime(){
   return 'snack';
 }
 
+/* ============ 添加/编辑食物 ============ */
 function openSheet(meal){
   if(meal) currentMeal = meal;
   editRef = null;
+  currentFoodImg = '';
   const m = MEALS.find(x=>x.key===currentMeal);
   document.getElementById('sheetTitle').textContent = '添加 · ' + m.name;
   ['foodName','foodKcal','foodProtein','foodCarb','foodFat','foodFiber'].forEach(id=>{
     document.getElementById(id).value = '';
   });
+  document.getElementById('foodImgPreview').style.display = 'none';
+  document.getElementById('foodImgPreview').src = '';
   renderQuick();
   document.getElementById('modal').classList.add('show');
 }
+
+/* 输入食物名称时自动匹配营养 */
+function onFoodNameInput(){
+  const n = document.getElementById('foodName').value.trim();
+  if(!n) return;
+  // 精确或包含匹配
+  for(const k in FOOD_DB){
+    if(k === n || k.includes(n) || n.includes(k)){
+      const info = FOOD_DB[k];
+      // 只有当字段还是空的时候才自动填
+      if(!document.getElementById('foodKcal').value){
+        document.getElementById('foodKcal').value = info.k;
+        document.getElementById('foodProtein').value = info.p;
+        document.getElementById('foodCarb').value = info.c;
+        document.getElementById('foodFat').value = info.f;
+        document.getElementById('foodFiber').value = info.fi;
+      }
+      return;
+    }
+  }
+}
+
+function onFoodImg(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    const img = new Image();
+    img.onload = ()=>{
+      let {width, height} = img;
+      const maxSize = 600;
+      if(width > height && width > maxSize){ height = height*maxSize/width; width = maxSize; }
+      else if(height >= width && height > maxSize){ width = width*maxSize/height; height = maxSize; }
+      const canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height;
+      canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+      currentFoodImg = canvas.toDataURL('image/jpeg', 0.7);
+      const p = document.getElementById('foodImgPreview');
+      p.src = currentFoodImg;
+      p.style.display = 'block';
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 function editFood(meal, idx){
   const f = data.meals[meal][idx];
   if(!f) return;
   currentMeal = meal;
   editRef = {meal, idx};
-  const m = MEALS.find(x=>x.key===meal);
-  document.getElementById('sheetTitle').textContent = '编辑 · ' + m.name;
+  currentFoodImg = f.img || '';
+  document.getElementById('sheetTitle').textContent = '编辑 · ' + MEALS.find(x=>x.key===meal).name;
   document.getElementById('foodName').value = f.n || '';
   document.getElementById('foodKcal').value = f.k ?? '';
   document.getElementById('foodProtein').value = f.p ?? '';
   document.getElementById('foodCarb').value = f.c ?? '';
   document.getElementById('foodFat').value = f.f ?? '';
   document.getElementById('foodFiber').value = f.fi ?? '';
+  const p = document.getElementById('foodImgPreview');
+  if(currentFoodImg){ p.src = currentFoodImg; p.style.display = 'block'; }
+  else{ p.style.display = 'none'; p.src = ''; }
   renderQuick();
   document.getElementById('modal').classList.add('show');
 }
+
 function renderQuick(){
   const q = document.getElementById('quick');
   q.innerHTML = '';
@@ -1031,7 +1173,9 @@ function renderQuick(){
     q.appendChild(b);
   });
 }
+
 function closeSheet(){ document.getElementById('modal').classList.remove('show'); }
+
 function saveFood(){
   const n = document.getElementById('foodName').value.trim();
   if(!n){ alert('请输入食物名称'); return; }
@@ -1041,18 +1185,21 @@ function saveFood(){
     p:  parseFloat(document.getElementById('foodProtein').value)||0,
     c:  parseFloat(document.getElementById('foodCarb').value)||0,
     f:  parseFloat(document.getElementById('foodFat').value)||0,
-    fi: parseFloat(document.getElementById('foodFiber').value)||0
+    fi: parseFloat(document.getElementById('foodFiber').value)||0,
+    img: currentFoodImg || ''
   };
   if(editRef){ data.meals[editRef.meal][editRef.idx] = item; editRef = null; }
   else{ data.meals[currentMeal].push(item); }
   saveDay(); render(); closeSheet();
   showMealResult(currentMeal);
 }
+
 function delFood(meal, idx){
   if(!confirm('删除这条记录？')) return;
   data.meals[meal].splice(idx,1);
   saveDay(); render();
 }
+
 function showMealResult(meal, extra){
   const t = totals();
   const left = TARGET.kMax - t.k;
@@ -1063,11 +1210,12 @@ function showMealResult(meal, extra){
   msg += `\n蛋白质 ${t.p}g（目标 ${TARGET.p}g）`;
   msg += `\n碳水 ${t.c}g / 脂肪 ${t.f}g / 纤维 ${t.fi}g`;
   msg += `\n\n剩余可吃 ${left>0?left:0} kcal`;
-  if(left < 0) msg += `\n⚠️ 已超出上限 ${Math.abs(left)} kcal，下一餐吃清淡点`;
-  else if(left < 150) msg += `\n🐾 快到今日上限了，下一餐选轻一点的`;
-  else msg += `\n🐾 还有空间，继续保持`;
+  if(left < 0) msg += `\n⚠️ 已超出 ${Math.abs(left)} kcal`;
+  else if(left < 150) msg += `\n🐾 快到上限了`;
+  else msg += `\n🐾 还有空间`;
   setTimeout(()=>alert(msg), 120);
 }
+
 function resetDay(){
   if(confirm('确定清空今天所有记录吗？')){
     data = emptyDay();
@@ -1075,6 +1223,7 @@ function resetDay(){
   }
 }
 
+/* ============ 历史 ============ */
 function renderHistory(){
   history[todayKey()] = JSON.parse(JSON.stringify(data.meals));
   saveHistory();
@@ -1140,7 +1289,7 @@ function toggleHist(k){
 }
 function exportData(){
   const backup = {
-    version: 3,
+    version: 4,
     exportAt: new Date().toISOString(),
     today: data,
     history: history,
@@ -1188,6 +1337,7 @@ function importData(){
   inp.click();
 }
 
+/* ============ 体重 ============ */
 function renderWeight(){
   let cur = null;
   if(weights.length){
@@ -1265,16 +1415,31 @@ function renderWeight(){
           <span class="d">${w.date}</span>
           <span class="w">${w.kg} kg ${diffHTML}</span>
           ${w.note?`<span style="font-size:10px;color:#999">${esc(w.note)}</span>`:''}
+          <span class="act" onclick="editWeight('${w.date}')">✏️</span>
           <span class="act" onclick="delWeight('${w.date}')">✕</span>
         </div>`;
     });
   }
 }
 function openWeightSheet(){
+  editWeightIdx = -1;
+  document.getElementById('weightTitle').textContent = '记录体重';
   const latest = weights.length ? [...weights].sort((a,b)=>b.date.localeCompare(a.date))[0].kg : '';
   document.getElementById('weightVal').value = latest;
   document.getElementById('weightDate').value = new Date().toISOString().slice(0,10);
   document.getElementById('weightNote').value = '';
+  document.getElementById('weightModal').classList.add('show');
+}
+function editWeight(date){
+  const idx = weights.findIndex(w=>w.date === date);
+  if(idx < 0) return;
+  editWeightIdx = idx;
+  const w = weights[idx];
+  document.getElementById('weightTitle').textContent = '修改体重';
+  document.getElementById('weightVal').value = w.kg;
+  const [y,m,d] = date.split('-').map(Number);
+  document.getElementById('weightDate').value = `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  document.getElementById('weightNote').value = w.note || '';
   document.getElementById('weightModal').classList.add('show');
 }
 function closeWeightSheet(){ document.getElementById('weightModal').classList.remove('show'); }
@@ -1285,13 +1450,30 @@ function saveWeight(){
   if(!kg || kg < 20 || kg > 200){ alert('请输入合理体重'); return; }
   const [y,m,d] = dateVal.split('-').map(Number);
   const key = `${y}-${m}-${d}`;
-  const existing = weights.findIndex(w=>w.date === key);
-  if(existing >= 0){
-    weights[existing].kg = kg;
-    weights[existing].note = note;
+  if(editWeightIdx >= 0){
+    const oldDate = weights[editWeightIdx].date;
+    // 如果日期变了，检查是否和别的记录冲突
+    if(key !== oldDate){
+      const dup = weights.findIndex((w,i)=> i !== editWeightIdx && w.date === key);
+      if(dup >= 0){
+        if(!confirm('该日期已有记录，要覆盖吗？')) return;
+        weights.splice(dup, 1);
+        if(dup < editWeightIdx) editWeightIdx--;
+      }
+    }
+    weights[editWeightIdx].date = key;
+    weights[editWeightIdx].kg = kg;
+    weights[editWeightIdx].note = note;
   }else{
-    weights.push({date:key, kg, note});
+    const existing = weights.findIndex(w=>w.date === key);
+    if(existing >= 0){
+      weights[existing].kg = kg;
+      weights[existing].note = note;
+    }else{
+      weights.push({date:key, kg, note});
+    }
   }
+  editWeightIdx = -1;
   saveWeights();
   closeWeightSheet();
   renderWeight();
