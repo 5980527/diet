@@ -19,20 +19,16 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .load-fill{height:100%;width:0;background:#222;animation:fill 1.5s ease forwards}
 @keyframes fill{to{width:100%}}
 .load-txt{margin-top:12px;font-size:12px;color:#888;letter-spacing:1px}
-
 header{background:#fff;padding:16px 20px 12px;border-bottom:2px solid #222;position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:10px}
 .dog{width:44px;height:44px;flex-shrink:0}
 header h1{font-size:18px;letter-spacing:1px}
 header p{font-size:11px;color:#888;margin-top:2px}
-
 .tabs{display:flex;margin:14px 14px 0;border:2px solid #222;border-radius:14px;overflow:hidden;box-shadow:3px 3px 0 #222;background:#fff}
 .tabs button{flex:1;padding:11px 0;border:none;background:#fff;font-size:12px;font-weight:800;font-family:inherit;cursor:pointer;color:#222;transition:.15s}
 .tabs button.active{background:#222;color:#fff}
-
 .card{background:#fff;margin:14px;border-radius:18px;padding:16px;border:2px solid #222;box-shadow:3px 3px 0 #222}
 .card h2{font-size:14px;margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .card h2 span.dot{width:8px;height:8px;background:#222;border-radius:50%}
-
 .energy-top{display:flex;gap:8px;margin-bottom:14px}
 .energy-box{flex:1;border:2px solid #222;border-radius:14px;padding:10px 6px;text-align:center}
 .energy-box .v{font-size:19px;font-weight:800}
@@ -40,14 +36,12 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .energy-box.highlight{background:#222;color:#fff}
 .energy-box.highlight .l{color:#aaa}
 .energy-box.warn{background:#fff3cd;border-color:#c99a00}
-
 .nutri{margin-top:6px}
 .nutri-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;font-size:12px}
 .nutri-row .name{width:56px;color:#666;flex-shrink:0;font-size:11px}
 .nutri-row .bar{flex:1;height:10px;background:#eee;border-radius:6px;overflow:hidden;border:1px solid #ddd}
 .nutri-row .bar i{display:block;height:100%;background:#222;border-radius:6px;transition:width .4s}
 .nutri-row .val{width:72px;text-align:right;font-weight:700;font-size:11px;flex-shrink:0}
-
 .meal{margin-bottom:10px;border:2px dashed #ddd;border-radius:14px;padding:10px}
 .meal.done{border-style:solid;border-color:#222;background:#fafafa}
 .meal-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700}
@@ -60,25 +54,24 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .meal-items .macro{color:#999;font-size:10px}
 .add-btn{margin-top:8px;border:2px solid #222;background:#fff;border-radius:10px;padding:5px 12px;font-size:12px;font-weight:700;color:#222;cursor:pointer;font-family:inherit}
 .add-btn:active{background:#222;color:#fff}
-
 .reco{display:flex;flex-direction:column;gap:8px}
 .reco-item{display:flex;align-items:center;gap:10px;font-size:12px;background:#f2f2f2;border-radius:12px;padding:9px 12px}
 .reco-item .emoji{font-size:18px}
 .reco-item b{font-size:13px}
 .reco-item .p{margin-left:auto;color:#666;font-size:11px;white-space:nowrap}
-
+.dog-talk{display:flex;gap:10px;align-items:flex-end;margin:14px 14px 0}
+.dog-talk svg{width:46px;height:46px;flex-shrink:0}
+.bubble{background:#fff;border:2px solid #222;border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:12px;line-height:1.5;position:relative;flex:1;box-shadow:2px 2px 0 #ddd;color:#333}
 .entry{display:flex;gap:12px;margin:14px}
-.entry button{flex:1;border:2px solid #222;border-radius:18px;background:#fff;padding:20px 10px;font-family:inherit;cursor:pointer;box-shadow:3px 3px 0 #222;display:flex;flex-direction:column;align-items:center;gap:6px;transition:.15s}
+.entry button{flex:1;border:2px solid #222;border-radius:18px;background:#fff;padding:24px 10px;font-family:inherit;cursor:pointer;box-shadow:3px 3px 0 #222;display:flex;flex-direction:column;align-items:center;gap:6px;transition:.15s}
 .entry button:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #222}
-.entry .ico{font-size:30px}
+.entry .ico{font-size:34px}
 .entry .t{font-size:15px;font-weight:800}
 .entry .s{font-size:10px;color:#999}
-
 .loc-row{display:flex;align-items:center;gap:8px;font-size:12px;color:#666;background:#f2f2f2;border-radius:12px;padding:9px 12px;margin-bottom:10px}
 .loc-row .addr{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .loc-row button{border:1.5px solid #222;background:#fff;border-radius:8px;padding:4px 9px;font-size:11px;font-family:inherit;cursor:pointer;font-weight:700}
 .loc-row button:active{background:#222;color:#fff}
-
 .takeout{border:2px solid #222;border-radius:14px;padding:12px;margin-bottom:10px;background:#fff;box-shadow:2px 2px 0 #ddd}
 .takeout .top{display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .takeout .name{font-size:14px;font-weight:800;flex:1}
@@ -89,20 +82,18 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .takeout .macros span{background:#f2f2f2;border-radius:8px;padding:3px 7px}
 .takeout .go{display:block;text-align:center;background:#222;color:#fff;border-radius:10px;padding:9px;font-size:12px;font-weight:800;text-decoration:none}
 .takeout .go:active{opacity:.8}
-
-.upload{border:2px dashed #bbb;border-radius:14px;padding:22px 14px;text-align:center;cursor:pointer;background:#fafafa;margin-bottom:12px;transition:.15s}
+.upload{border:2px dashed #bbb;border-radius:14px;padding:22px 14px;text-align:center;cursor:pointer;background:#fafafa;margin-bottom:12px;transition:.15s;display:block}
 .upload:active{background:#f0f0f0}
 .upload .ico{font-size:30px;margin-bottom:6px}
 .upload .t{font-size:13px;font-weight:700}
 .upload .s{font-size:10px;color:#999;margin-top:4px}
-
+.upload img{width:100%;border-radius:10px;margin-top:10px;max-height:220px;object-fit:cover;border:2px solid #222}
 .result{border:2px solid #222;border-radius:14px;padding:12px;background:#fafafa;margin-bottom:12px}
 .result h4{font-size:13px;margin-bottom:8px;display:flex;align-items:center;gap:6px}
 .result .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px}
 .result .grid div{background:#fff;border:1.5px solid #ddd;border-radius:10px;padding:8px}
 .result .grid b{display:block;font-size:15px;color:#222;margin-top:2px}
 .result .note{font-size:10px;color:#999;margin-top:8px;line-height:1.5}
-
 .recipe{border:2px solid #222;border-radius:14px;padding:12px;margin-bottom:10px;background:#fff;box-shadow:2px 2px 0 #ddd}
 .recipe .top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .recipe .name{font-size:14px;font-weight:800;flex:1}
@@ -112,7 +103,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .recipe .steps{font-size:11px;color:#555;line-height:1.7;border-top:1px dashed #ddd;padding-top:8px}
 .recipe .macros{display:flex;gap:8px;font-size:10px;color:#666;margin-bottom:8px;flex-wrap:wrap}
 .recipe .macros span{background:#f2f2f2;border-radius:8px;padding:3px 7px}
-
 .ing-input{display:flex;gap:8px;margin-bottom:10px}
 .ing-input input{flex:1;padding:11px;border:2px solid #222;border-radius:12px;font-size:14px;font-family:inherit}
 .ing-input input:focus{outline:none;background:#f7f7f7}
@@ -121,13 +111,11 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .ing-tag{background:#222;color:#fff;border-radius:20px;padding:5px 11px;font-size:12px;display:flex;align-items:center;gap:6px}
 .ing-tag span{cursor:pointer;opacity:.7}
 .ing-tag span:active{opacity:1}
-
 .bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid #222;padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;gap:10px;z-index:20}
 .bottom button{flex:1;padding:13px;border-radius:14px;border:2px solid #222;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit}
 .btn-main{background:#222;color:#fff}
 .btn-sub{background:#fff;color:#222}
 .bottom button:active{transform:scale(.97)}
-
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:flex-end;z-index:50}
 .modal.show{display:flex}
 .sheet{background:#fff;width:100%;border-radius:22px 22px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom));max-height:88vh;overflow-y:auto;animation:up .25s ease}
@@ -144,17 +132,12 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .sheet-actions button{flex:1;padding:13px;border-radius:12px;border:2px solid #222;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer}
 .ghost{background:#fff;color:#222}
 .solid{background:#222;color:#fff}
-
 .empty{font-size:12px;color:#aaa;text-align:center;padding:8px 0}
 .paw{font-size:11px;color:#bbb;text-align:center;margin:20px 0 6px}
 .hint{font-size:10px;color:#999;line-height:1.6;margin:-4px 0 10px}
 .page{display:none}
 .page.active{display:block}
 .section-title{font-size:12px;color:#888;margin:0 14px 8px;font-weight:700;letter-spacing:.5px}
-.spinner{display:inline-block;width:14px;height:14px;border:2px solid #ddd;border-top-color:#222;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:6px}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* 历史页 */
 .hist-day{border:2px solid #222;border-radius:14px;margin-bottom:10px;background:#fff;box-shadow:2px 2px 0 #ddd;overflow:hidden}
 .hist-head{display:flex;align-items:center;gap:10px;padding:11px 13px;background:#fafafa;cursor:pointer}
 .hist-head .date{font-size:13px;font-weight:800;flex:1}
@@ -170,8 +153,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .hist-meal{margin-top:6px}
 .hist-meal b{color:#222;font-size:11px}
 .hist-food{color:#888;font-size:10px;padding-left:8px}
-
-/* 体重 */
 .chart{position:relative;height:140px;margin:6px 0 12px;border:2px solid #222;border-radius:14px;background:#fafafa;overflow:hidden}
 .chart svg{width:100%;height:100%;display:block}
 .chart .no-data{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;color:#bbb}
@@ -184,12 +165,10 @@ header p{font-size:11px;color:#888;margin-top:2px}
 .weight-row .diff.down{color:#4a8f4a}
 .weight-row .act{color:#bbb;cursor:pointer;font-size:14px}
 .weight-row .act:active{color:#222}
-
 .stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
 .stat-box{border:2px solid #222;border-radius:12px;padding:9px 6px;text-align:center}
 .stat-box .v{font-size:16px;font-weight:800}
 .stat-box .l{font-size:9px;color:#888;margin-top:2px}
-
 .bmi-tag{display:inline-block;font-size:10px;border-radius:8px;padding:2px 8px;margin-left:6px;font-weight:700}
 .bmi-normal{background:#e3f3e3;color:#3a7a3a}
 .bmi-low{background:#fff3cd;color:#8a6d00}
@@ -247,17 +226,28 @@ header p{font-size:11px;color:#888;margin-top:2px}
   <button onclick="switchTab('weight',this)">⚖️ 体重</button>
 </div>
 
-<!-- 首页 -->
 <div class="page active" id="page-home">
+  <div class="dog-talk">
+    <svg viewBox="0 0 100 100">
+      <ellipse cx="26" cy="34" rx="11" ry="17" fill="#222" transform="rotate(-15 26 34)"/>
+      <ellipse cx="74" cy="34" rx="11" ry="17" fill="#222" transform="rotate(15 74 34)"/>
+      <ellipse cx="50" cy="56" rx="30" ry="30" fill="#fff" stroke="#222" stroke-width="3"/>
+      <path d="M50 26 a30 30 0 0 0 0 60 z" fill="#222"/>
+      <circle cx="38" cy="52" r="4.5" fill="#222"/>
+      <circle cx="62" cy="52" r="4.5" fill="#fff"/>
+      <ellipse cx="50" cy="68" rx="6" ry="4.5" fill="#222"/>
+      <path d="M50 72 v4 M50 76 q-5 4 -9 0 M50 76 q5 4 9 0" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="bubble" id="dogMsg">今天也要好好吃饭汪！先选一个开始吧 🐾</div>
+  </div>
   <div class="entry">
     <button onclick="switchTab('takeout',document.querySelectorAll('.tabs button')[1])">
-      <span class="ico">🛵</span><span class="t">点外卖</span><span class="s">优先低卡推荐</span>
+      <span class="ico">🛵</span><span class="t">点外卖</span><span class="s">低卡推荐 + 图识别</span>
     </button>
     <button onclick="switchTab('cook',document.querySelectorAll('.tabs button')[2])">
       <span class="ico">🍳</span><span class="t">自己做饭</span><span class="s">按食材出菜谱</span>
     </button>
   </div>
-
   <div class="card">
     <h2><span class="dot"></span>今日热量（目标 1000-1200）</h2>
     <div class="energy-top">
@@ -272,21 +262,17 @@ header p{font-size:11px;color:#888;margin-top:2px}
       <div class="nutri-row"><span class="name">膳食纤维</span><span class="bar"><i id="barFi"></i></span><span class="val" id="valFi">0 / 25g</span></div>
     </div>
   </div>
-
   <div class="card">
     <h2><span class="dot"></span>今日饮食</h2>
     <div id="meals"></div>
   </div>
-
   <div class="card">
     <h2><span class="dot"></span>边牧推荐补充</h2>
     <div class="reco" id="reco"></div>
   </div>
-
   <p class="paw">🐾 数据保存在本机，换设备不同步</p>
 </div>
 
-<!-- 外卖 -->
 <div class="page" id="page-takeout">
   <div class="card">
     <h2><span class="dot"></span>你的位置</h2>
@@ -298,19 +284,17 @@ header p{font-size:11px;color:#888;margin-top:2px}
     </div>
     <p class="hint">定位仅用于生成推荐，不会上传到任何服务器。</p>
   </div>
-
   <div class="card">
-    <h2><span class="dot"></span>📷 拍一下或传图识别</h2>
-    <p class="hint">支持拍照或上传截图，自动识别餐名并估算营养（百度AI菜品识别）。</p>
-    <label class="upload" for="imgFile">
+    <h2><span class="dot"></span>📷 上传图片 + 输入餐名</h2>
+    <p class="hint">上传餐食照片，输入菜名和份量，App 自动估算营养。</p>
+    <label class="upload" for="imgFile" id="uploadBox">
       <div class="ico">📷</div>
-      <div class="t">点击拍照 / 选图片</div>
-      <div class="s">支持 JPG / PNG，图片会自动压缩</div>
+      <div class="t">点击选图片 / 拍照</div>
+      <div class="s">支持相册和拍照，图片只在本机使用</div>
     </label>
     <input type="file" id="imgFile" accept="image/*" style="display:none" onchange="onPickImage(event)">
     <div id="imgResult"></div>
   </div>
-
   <div class="card">
     <h2><span class="dot"></span>低卡外卖推荐</h2>
     <p class="hint">按热量从低到高排序，点击可跳转美团搜索该餐品。</p>
@@ -318,7 +302,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
   </div>
 </div>
 
-<!-- 做饭 -->
 <div class="page" id="page-cook">
   <div class="card">
     <h2><span class="dot"></span>我有这些食材</h2>
@@ -333,7 +316,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
   <div id="recipeList"></div>
 </div>
 
-<!-- 历史 -->
 <div class="page" id="page-history">
   <div class="card">
     <h2><span class="dot"></span>最近 7 天概览</h2>
@@ -344,9 +326,7 @@ header p{font-size:11px;color:#888;margin-top:2px}
     </div>
     <p class="hint">点日期展开当天详情，再点一次收起。</p>
   </div>
-
   <div id="historyList" style="margin:0 14px"></div>
-
   <div class="card">
     <h2><span class="dot"></span>数据管理</h2>
     <div class="sheet-actions">
@@ -357,45 +337,30 @@ header p{font-size:11px;color:#888;margin-top:2px}
   </div>
 </div>
 
-<!-- 体重 -->
 <div class="page" id="page-weight">
   <div class="card">
     <h2><span class="dot"></span>当前状态</h2>
     <div class="energy-top">
-      <div class="energy-box highlight">
-        <div class="v" id="curWeight">--</div>
-        <div class="l">当前体重 kg</div>
-      </div>
-      <div class="energy-box">
-        <div class="v" id="curBMI">--</div>
-        <div class="l">BMI</div>
-      </div>
-      <div class="energy-box">
-        <div class="v" id="goalWeight">--</div>
-        <div class="l">目标 kg</div>
-      </div>
+      <div class="energy-box highlight"><div class="v" id="curWeight">--</div><div class="l">当前体重 kg</div></div>
+      <div class="energy-box"><div class="v" id="curBMI">--</div><div class="l">BMI</div></div>
+      <div class="energy-box"><div class="v" id="goalWeight">--</div><div class="l">目标 kg</div></div>
     </div>
     <p style="font-size:11px;color:#888;text-align:center" id="bmiNote">身高 160cm，记录体重后显示 BMI</p>
     <button class="add-btn" style="width:100%;padding:11px;margin-top:12px" onclick="openWeightSheet()">＋ 记录今天的体重</button>
   </div>
-
   <div class="card">
     <h2><span class="dot"></span>体重趋势</h2>
-    <div class="chart" id="chart">
-      <div class="no-data">还没有体重数据</div>
-    </div>
-    <p class="hint">根据体重变化自动微调每日热量目标：体重下降过快会提醒你增加摄入，停滞会建议减少一点。</p>
+    <div class="chart" id="chart"><div class="no-data">还没有体重数据</div></div>
+    <p class="hint">根据体重变化自动提示调整每日热量目标。</p>
   </div>
-
   <div class="card">
     <h2><span class="dot"></span>体重记录</h2>
     <div id="weightList"><div class="empty">还没有记录</div></div>
   </div>
-
   <div class="card">
     <h2><span class="dot"></span>目标设定</h2>
     <div class="ing-input">
-      <input id="goalInput" type="number" inputmode="decimal" placeholder="目标体重 kg，如 52" >
+      <input id="goalInput" type="number" inputmode="decimal" placeholder="目标体重 kg，如 52">
       <button onclick="saveGoal()">保存</button>
     </div>
     <p class="hint">身高固定 160cm。当前热量目标 1000-1200 kcal、蛋白 70g。</p>
@@ -407,7 +372,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
   <button class="btn-main" onclick="openSheet()">＋ 记一笔</button>
 </div>
 
-<!-- 食物弹窗 -->
 <div class="modal" id="modal">
   <div class="sheet">
     <h3 id="sheetTitle">添加食物</h3>
@@ -429,7 +393,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
   </div>
 </div>
 
-<!-- 体重弹窗 -->
 <div class="modal" id="weightModal">
   <div class="sheet">
     <h3 id="weightTitle">记录体重</h3>
@@ -445,17 +408,50 @@ header p{font-size:11px;color:#888;margin-top:2px}
 
 <script>
 /* ============================================================
-   配置：百度 AI 菜品识别
-   注意：这是你之前发的 key，建议尽快在百度控制台重新生成
+   本地营养数据库：每100g
 ============================================================ */
-const BAIDU_API_KEY = 'SF0uVXQrL0ogA7RsneGt1FFg';
-const BAIDU_SECRET_KEY = 'OKH3ULFWTeeOjqaT1UmLlsAx7KFAsPdq';
+const FOOD_DB = {
+  '鸡胸肉':{k:133,p:24,c:0,f:3,fi:0},'鸡腿肉':{k:181,p:19,c:0,f:11,fi:0},
+  '鸡蛋':{k:143,p:13,c:1,f:9,fi:0},'牛肉':{k:180,p:20,c:0,f:11,fi:0},
+  '猪瘦肉':{k:143,p:20,c:1,f:6,fi:0},'豆腐':{k:82,p:8,c:3,f:5,fi:0.4},
+  '豆干':{k:140,p:16,c:6,f:7,fi:1},'毛豆':{k:131,p:13,c:10,f:5,fi:4},
+  '鹰嘴豆':{k:164,p:9,c:27,f:3,fi:8},'牛奶':{k:52,p:3.2,c:5,f:3.2,fi:0},
+  '无糖酸奶':{k:60,p:5,c:5,f:3,fi:0},'燕麦':{k:380,p:12,c:66,f:7,fi:10},
+  '糙米':{k:348,p:8,c:73,f:3,fi:3.5},'米饭':{k:116,p:2,c:25,f:0.3,fi:0.3},
+  '红薯':{k:86,p:1.6,c:20,f:0.1,fi:3},'西兰花':{k:34,p:3,c:7,f:0.4,fi:2.6},
+  '菠菜':{k:23,p:2.9,c:3.6,f:0.4,fi:2.2},'生菜':{k:15,p:1.4,c:2.9,f:0.2,fi:1.3},
+  '番茄':{k:18,p:0.9,c:3.9,f:0.2,fi:1.2},'黄瓜':{k:15,p:0.7,c:3.6,f:0.1,fi:0.5},
+  '胡萝卜':{k:41,p:0.9,c:10,f:0.2,fi:2.8},'土豆':{k:77,p:2,c:17,f:0.1,fi:2.2},
+  '玉米':{k:86,p:3.3,c:19,f:1.2,fi:2.4},'蘑菇':{k:22,p:3.1,c:3.3,f:0.3,fi:1},
+  '青椒':{k:20,p:0.9,c:4.6,f:0.2,fi:1.7},'洋葱':{k:40,p:1.1,c:9,f:0.1,fi:1.7},
+  '西葫芦':{k:17,p:1.2,c:3.1,f:0.3,fi:1},'南瓜':{k:26,p:1,c:6.5,f:0.1,fi:0.5},
+  '木耳':{k:25,p:1.5,c:6,f:0.2,fi:2.6},'魔芋':{k:7,p:0.1,c:3,f:0,fi:2.7},
+  '橄榄油':{k:884,p:0,c:0,f:100,fi:0},'沙拉':{k:80,p:6,c:8,f:3,fi:3},
+  '面':{k:110,p:4,c:22,f:0.5,fi:1},'饭':{k:116,p:2,c:25,f:0.3,fi:0.3},
+  '粥':{k:46,p:1.1,c:10,f:0.3,fi:0.5},'汤':{k:30,p:2,c:4,f:1,fi:1}
+};
 
-/* 目标 */
-const HEIGHT_CM = 160;
+/* 菜名关键词 → 每份(约250g)的估算值 */
+const DISH_PRESET = {
+  '沙拉':{k:280,p:20,c:15,f:8,fi:5,portion:250},
+  '鸡胸':{k:280,p:30,c:5,f:6,fi:1,portion:200},
+  '牛肉':{k:350,p:25,c:10,f:18,fi:1,portion:200},
+  '鱼':{k:300,p:22,c:8,f:14,fi:0,portion:200},
+  '面':{k:420,p:15,c:65,f:10,fi:3,portion:400},
+  '饭':{k:380,p:14,c:58,f:9,fi:2,portion:400},
+  '粥':{k:180,p:5,c:36,f:2,fi:1,portion:350},
+  '汤':{k:150,p:8,c:12,f:6,fi:2,portion:300},
+  '蛋':{k:220,p:13,c:3,f:15,fi:0,portion:150},
+  '豆腐':{k:180,p:13,c:6,f:10,fi:1,portion:200},
+  '蔬菜':{k:120,p:4,c:15,f:4,fi:4,portion:250},
+  '汉堡':{k:480,p:20,c:45,f:24,fi:2,portion:250},
+  '披萨':{k:520,p:18,c:55,f:22,fi:2,portion:250},
+  '炸':{k:420,p:16,c:32,f:24,fi:1,portion:200},
+  '烤':{k:350,p:24,c:18,f:18,fi:1,portion:250},
+  '炒':{k:320,p:16,c:22,f:18,fi:2,portion:250}
+};
+
 const TARGET = {kMin:1000, kMax:1200, p:70, c:130, f:35, fi:25};
-
-/* ========== 基础数据 ========== */
 const MEALS = [
   {key:'breakfast', name:'🌅 早餐'},
   {key:'lunch',     name:'☀️ 午餐'},
@@ -497,37 +493,6 @@ const TAKEOUTS = [
   {n:'豆浆+茶叶蛋', k:180, p:13, c:12, f:8, fi:2, d:'赶时间的轻量早餐', q:'豆浆茶叶蛋'}
 ];
 
-const FOOD_DB = {
-  '鸡胸肉':{k:133,p:24,c:0,f:3,fi:0},'鸡腿肉':{k:181,p:19,c:0,f:11,fi:0},
-  '鸡蛋':{k:143,p:13,c:1,f:9,fi:0},'牛肉':{k:180,p:20,c:0,f:11,fi:0},
-  '猪瘦肉':{k:143,p:20,c:1,f:6,fi:0},'豆腐':{k:82,p:8,c:3,f:5,fi:0.4},
-  '豆干':{k:140,p:16,c:6,f:7,fi:1},'毛豆':{k:131,p:13,c:10,f:5,fi:4},
-  '鹰嘴豆':{k:164,p:9,c:27,f:3,fi:8},'牛奶':{k:52,p:3.2,c:5,f:3.2,fi:0},
-  '无糖酸奶':{k:60,p:5,c:5,f:3,fi:0},'燕麦':{k:380,p:12,c:66,f:7,fi:10},
-  '糙米':{k:348,p:8,c:73,f:3,fi:3.5},'米饭':{k:116,p:2,c:25,f:0.3,fi:0.3},
-  '红薯':{k:86,p:1.6,c:20,f:0.1,fi:3},'西兰花':{k:34,p:3,c:7,f:0.4,fi:2.6},
-  '菠菜':{k:23,p:2.9,c:3.6,f:0.4,fi:2.2},'生菜':{k:15,p:1.4,c:2.9,f:0.2,fi:1.3},
-  '番茄':{k:18,p:0.9,c:3.9,f:0.2,fi:1.2},'黄瓜':{k:15,p:0.7,c:3.6,f:0.1,fi:0.5},
-  '胡萝卜':{k:41,p:0.9,c:10,f:0.2,fi:2.8},'土豆':{k:77,p:2,c:17,f:0.1,fi:2.2},
-  '玉米':{k:86,p:3.3,c:19,f:1.2,fi:2.4},'蘑菇':{k:22,p:3.1,c:3.3,f:0.3,fi:1},
-  '青椒':{k:20,p:0.9,c:4.6,f:0.2,fi:1.7},'洋葱':{k:40,p:1.1,c:9,f:0.1,fi:1.7},
-  '西葫芦':{k:17,p:1.2,c:3.1,f:0.3,fi:1},'南瓜':{k:26,p:1,c:6.5,f:0.1,fi:0.5},
-  '木耳':{k:25,p:1.5,c:6,f:0.2,fi:2.6},'魔芋':{k:7,p:0.1,c:3,f:0,fi:2.7},
-  '橄榄油':{k:884,p:0,c:0,f:100,fi:0}
-};
-
-const DISH_NUTRI = {
-  '沙拉':{p:20,c:15,f:8,fi:5},'鸡胸':{p:28,c:5,f:5,fi:1},
-  '牛肉':{p:22,c:8,f:12,fi:1},'鱼':{p:20,c:5,f:8,fi:0},
-  '面':{p:15,c:60,f:8,fi:3},'饭':{p:12,c:55,f:6,fi:2},
-  '粥':{p:5,c:35,f:2,fi:1},'汤':{p:8,c:10,f:4,fi:2},
-  '蛋':{p:12,c:3,f:9,fi:0},'豆腐':{p:12,c:6,f:7,fi:1},
-  '蔬菜':{p:3,c:8,f:1,fi:3},'汉堡':{p:18,c:45,f:22,fi:2},
-  '披萨':{p:15,c:50,f:18,fi:2},'炸':{p:14,c:30,f:25,fi:1},
-  '烤':{p:22,c:15,f:12,fi:1},'炒':{p:15,c:20,f:14,fi:2}
-};
-
-/* ========== 状态 ========== */
 let data = loadDay();
 let history = loadHistory();
 let weights = loadWeights();
@@ -536,10 +501,7 @@ let currentMeal = 'breakfast';
 let editRef = null;
 let currentLoc = localStorage.getItem('borderCollieLoc') || '';
 let ingList = [];
-let baiduToken = null;
-let baiduTokenExp = 0;
 
-/* ========== 日期工具 ========== */
 function todayKey(d){
   const x = d || new Date();
   return x.getFullYear()+'-'+(x.getMonth()+1)+'-'+x.getDate();
@@ -553,8 +515,6 @@ function dateKeyToCn(k){
 function emptyDay(k){
   return {date: k||todayKey(), meals:{breakfast:[],lunch:[],dinner:[],snack:[]}};
 }
-
-/* ========== 存储 ========== */
 function loadDay(){
   let d = null;
   try{ d = JSON.parse(localStorage.getItem('borderCollieDiet2')||'null'); }catch(e){}
@@ -565,24 +525,18 @@ function loadDay(){
 }
 function saveDay(){
   localStorage.setItem('borderCollieDiet2', JSON.stringify(data));
-  // 同步到今天的历史里
   history[todayKey()] = JSON.parse(JSON.stringify(data.meals));
   saveHistory();
 }
 function loadHistory(){
   try{ return JSON.parse(localStorage.getItem('borderCollieHistory')||'{}'); }catch(e){ return {}; }
 }
-function saveHistory(){
-  localStorage.setItem('borderCollieHistory', JSON.stringify(history));
-}
+function saveHistory(){ localStorage.setItem('borderCollieHistory', JSON.stringify(history)); }
 function loadWeights(){
   try{ return JSON.parse(localStorage.getItem('borderCollieWeights')||'[]'); }catch(e){ return []; }
 }
-function saveWeights(){
-  localStorage.setItem('borderCollieWeights', JSON.stringify(weights));
-}
+function saveWeights(){ localStorage.setItem('borderCollieWeights', JSON.stringify(weights)); }
 
-/* ========== 计算 ========== */
 function totals(){
   let t = {k:0,p:0,c:0,f:0,fi:0};
   MEALS.forEach(m=>{
@@ -611,8 +565,14 @@ function totalsOfMeals(meals){
 }
 function r1(x){ return Math.round(x*10)/10; }
 function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function findFood(name){
+  if(FOOD_DB[name]) return FOOD_DB[name];
+  for(const k in FOOD_DB){
+    if(name.includes(k) || k.includes(name)) return FOOD_DB[k];
+  }
+  return null;
+}
 
-/* ========== 渲染主界面 ========== */
 function render(){
   const d = new Date();
   const week = ['日','一','二','三','四','五','六'][d.getDay()];
@@ -655,7 +615,7 @@ function render(){
     if(items.length){
       itemsHTML = '<div class="meal-items">' + items.map((f,i)=>
         `<div class="row">
-           <span class="n">${esc(f.n)} <span class="macro">${Math.round(f.k||0)}kcal · ${f.p||0}P · ${f.c||0}C · ${f.f||0}F</span></span>
+           <span class="n">${esc(f.n)} <span class="macro">${Math.round(f.k||0)}kcal · ${f.p||0}P · ${f.c||0}C · ${f.f||0}F · ${f.fi||0}纤</span></span>
            <span class="act" onclick="editFood('${m.key}',${i})">✏️</span>
            <span class="act" onclick="delFood('${m.key}',${i})">✕</span>
          </div>`
@@ -676,19 +636,37 @@ function render(){
   recoWrap.innerHTML = '';
   const leftP = TARGET.p - t.p;
   if(leftP <= 0){
-    recoWrap.innerHTML = '<div class="empty">蛋白质达标啦！边牧给你比个爪 🐾</div>';
+    recoWrap.innerHTML = '<div class="empty">🎉 蛋白质达标啦！边牧给你比个爪 🐾</div>';
   }else{
     [...RECO].sort((a,b)=>Math.abs(a.p-leftP/2)-Math.abs(b.p-leftP/2)).slice(0,4).forEach(r=>{
-      recoWrap.innerHTML += `<div class="reco-item"><span class="emoji">${r.e}</span><span><b>${r.n}</b></span><span class="p">约 ${r.p}g 蛋白</span></div>`;
+      recoWrap.innerHTML += `<div class="reco-item"><span class="emoji">🐾</span><span><b>${r.n}</b></span><span class="p">约 ${r.p}g 蛋白 ${r.e}</span></div>`;
     });
     recoWrap.innerHTML += `<div class="empty">还差 ${leftP.toFixed(1)}g，选一样补上吧</div>`;
   }
 
+  updateDogMsg(t);
   renderTakeout();
   renderIngs();
 }
 
-/* ========== 外卖 ========== */
+function updateDogMsg(t){
+  const left = TARGET.kMax - t.k;
+  const leftP = TARGET.p - t.p;
+  const msg = document.getElementById('dogMsg');
+  if(t.k === 0){
+    msg.textContent = '今天还没记录哦，先选一个开始吧 🐾';
+  }else if(left < 0){
+    msg.textContent = `汪！今天已经超出 ${Math.abs(left)} kcal 了，下一餐吃清淡点吧 🐶`;
+  }else if(leftP <= 0){
+    msg.textContent = `蛋白质达标啦！还剩 ${left} kcal 可以吃，边牧为你骄傲 🐾`;
+  }else if(left < 150){
+    msg.textContent = `还剩 ${left} kcal，蛋白还差 ${leftP.toFixed(1)}g，选清淡高蛋白的哦 🐕`;
+  }else{
+    msg.textContent = `已摄入 ${t.k} kcal，还剩 ${left} kcal，蛋白还差 ${leftP.toFixed(1)}g 🐾`;
+  }
+}
+
+/* 外卖列表 */
 function renderTakeout(){
   const list = [...TAKEOUTS].sort((a,b)=>a.k-b.k);
   const wrap = document.getElementById('takeoutList');
@@ -736,122 +714,103 @@ function manualAddr(){
   }
 }
 
-/* ========== 百度识别 ========== */
-async function getBaiduToken(){
-  const now = Date.now();
-  if(baiduToken && now < baiduTokenExp) return baiduToken;
-  const url = `https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=${BAIDU_API_KEY}&client_secret=${BAIDU_SECRET_KEY}`;
-  const res = await fetch(url, {method:'POST'});
-  const json = await res.json();
-  if(!json.access_token) throw new Error(json.error_description || '获取百度token失败');
-  baiduToken = json.access_token;
-  baiduTokenExp = now + (json.expires_in - 600) * 1000;
-  return baiduToken;
-}
-
-async function onPickImage(e){
+/* ============ 图片 + 餐名识别 ============ */
+function onPickImage(e){
   const file = e.target.files[0];
   if(!file) return;
-  const box = document.getElementById('imgResult');
-  box.innerHTML = '<div class="card"><div class="empty"><span class="spinner"></span>正在识别图片…</div></div>';
-  try{
-    const base64 = await compressImage(file, 1024, 0.8);
-    const token = await getBaiduToken();
-    const url = `https://aip.baidubce.com/rest/2.0/image-classify/v2/dish?access_token=${token}`;
-    const body = new URLSearchParams();
-    body.append('image', base64);
-    body.append('top_num', '3');
-    body.append('filter_threshold', '0.7');
-    const res = await fetch(url, {
-      method:'POST',
-      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body: body.toString()
-    });
-    const json = await res.json();
-    renderDishResult(json, base64);
-  }catch(err){
-    box.innerHTML = `<div class="card"><div class="empty">识别失败：${esc(err.message)}<br><br>请检查：1) API Key / Secret Key 是否有效 2) 百度控制台是否开通「菜品识别」 3) 网络是否正常</div></div>`;
-  }finally{
-    e.target.value = '';
-  }
-}
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    const img = new Image();
+    img.onload = ()=>{
+      // 压缩
+      let {width, height} = img;
+      const maxSize = 800;
+      if(width > height && width > maxSize){ height = height*maxSize/width; width = maxSize; }
+      else if(height >= width && height > maxSize){ width = width*maxSize/height; height = maxSize; }
+      const canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.75);
 
-function compressImage(file, maxSize, quality){
-  return new Promise((resolve, reject)=>{
-    const reader = new FileReader();
-    reader.onload = ev=>{
-      const img = new Image();
-      img.onload = ()=>{
-        let {width, height} = img;
-        if(width > height && width > maxSize){ height = height*maxSize/width; width = maxSize; }
-        else if(height >= width && height > maxSize){ width = width*maxSize/height; height = maxSize; }
-        const canvas = document.createElement('canvas');
-        canvas.width = width; canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0, width, height);
-        resolve(canvas.toDataURL('image/jpeg', quality).split(',')[1]);
-      };
-      img.onerror = reject;
-      img.src = ev.target.result;
+      // 显示图片
+      document.getElementById('uploadBox').innerHTML =
+        `<img src="${dataUrl}" alt="餐食照片"><div class="s" style="margin-top:8px">已选择图片，请填写餐名和份量</div>`;
+
+      // 弹出输入
+      const dishName = prompt('请输入这道菜的名字（如：鸡胸肉沙拉、番茄鸡蛋盖饭）', '');
+      if(!dishName || !dishName.trim()){
+        document.getElementById('uploadBox').innerHTML =
+          `<div class="ico">📷</div><div class="t">点击选图片 / 拍照</div><div class="s">支持相册和拍照，图片只在本机使用</div>`;
+        e.target.value = '';
+        return;
+      }
+      const gramsStr = prompt('估算份量（克），默认 250g', '250');
+      const grams = Math.max(50, Math.min(1000, parseFloat(gramsStr) || 250));
+
+      const nutri = estimateLocal(dishName.trim(), grams);
+      const box = document.getElementById('imgResult');
+      box.innerHTML = `
+        <div class="result">
+          <h4>🥘 ${esc(dishName.trim())} <span style="font-size:11px;color:#888">约 ${grams}g</span></h4>
+          <div class="grid">
+            <div>热量<b>${nutri.k} kcal</b></div>
+            <div>蛋白质<b>${nutri.p} g</b></div>
+            <div>碳水<b>${nutri.c} g</b></div>
+            <div>脂肪<b>${nutri.f} g</b></div>
+            <div>膳食纤维<b>${nutri.fi} g</b></div>
+            <div>估算份量<b>${grams} g</b></div>
+          </div>
+          <p class="note">⚠️ 营养值为本地数据库估算，仅供参考。可点下方按钮调整后记录。</p>
+          <div class="sheet-actions" style="margin-top:12px">
+            <button class="ghost" onclick="editDishResult('${esc(dishName.trim()).replace(/'/g,"&#39;")}',${nutri.k},${nutri.p},${nutri.c},${nutri.f},${nutri.fi})">✏️ 调整后记录</button>
+          </div>
+        </div>`;
+      e.target.value = '';
     };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
+    img.onerror = ()=>{ alert('图片读取失败'); e.target.value=''; };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
 }
 
-function renderDishResult(json, base64){
-  const box = document.getElementById('imgResult');
-  if(!json.result || !json.result.length){
-    box.innerHTML = '<div class="card"><div class="empty">没识别出菜品，换一张更清晰的图试试</div></div>';
-    return;
+function estimateLocal(name, grams){
+  const ratio = grams / 100;
+  // 1. 命中食物数据库
+  const hit = findFood(name);
+  if(hit){
+    return {
+      k: Math.round(hit.k * ratio),
+      p: r1(hit.p * ratio),
+      c: r1(hit.c * ratio),
+      f: r1(hit.f * ratio),
+      fi: r1(hit.fi * ratio)
+    };
   }
-  const top = json.result[0];
-  const name = top.name || '未知菜品';
-  const cal = top.calorie || '';
-  const nutri = estimateFromName(name, cal);
-
-  let altHTML = '';
-  if(json.result.length > 1){
-    altHTML = '<div style="font-size:10px;color:#999;margin-top:8px">其他可能：' +
-      json.result.slice(1).map(r=>`${esc(r.name)} ${r.probability?('('+(r.probability*100).toFixed(0)+'%)'):''}`).join('、') +
-      '</div>';
+  // 2. 从菜名关键词匹配
+  for(const key in DISH_PRESET){
+    if(name.includes(key)){
+      const d = DISH_PRESET[key];
+      // 预设是按参考份量给的，这里按实际克数缩放
+      const scale = grams / d.portion;
+      return {
+        k: Math.round(d.k * scale),
+        p: r1(d.p * scale),
+        c: r1(d.c * scale),
+        f: r1(d.f * scale),
+        fi: r1(d.fi * scale)
+      };
+    }
   }
-
-  box.innerHTML = `
-    <div class="result">
-      <h4>🥘 识别结果：${esc(name)} ${cal?`<span style="font-size:11px;color:#888">${esc(cal)}</span>`:''}</h4>
-      <img src="data:image/jpeg;base64,${base64}" style="width:100%;border-radius:10px;margin-bottom:10px">
-      <div class="grid">
-        <div>热量<b>${nutri.k} kcal</b></div>
-        <div>蛋白质<b>${nutri.p} g</b></div>
-        <div>碳水<b>${nutri.c} g</b></div>
-        <div>脂肪<b>${nutri.f} g</b></div>
-        <div>膳食纤维<b>${nutri.fi} g</b></div>
-        <div>估算份量<b>${nutri.portion}</b></div>
-      </div>
-      <p class="note">⚠️ 营养值为基于菜名和百度返回热量的估算，仅供参考。</p>
-      ${altHTML}
-      <div class="sheet-actions" style="margin-top:12px">
-        <button class="ghost" onclick="editDishResult('${esc(name).replace(/'/g,"&#39;")}',${nutri.k},${nutri.p},${nutri.c},${nutri.f},${nutri.fi})">✏️ 调整后记录</button>
-      </div>
-    </div>
-  `;
-}
-
-function estimateFromName(name, calStr){
-  let k = 0;
-  const m = String(calStr).match(/[\d.]+/);
-  if(m) k = parseFloat(m[0]);
-  if(!k || k <= 0) k = 350;
-  let base = {p:12, c:25, f:10, fi:2};
-  if(k > 500) base = {p:20, c:30, f:28, fi:2};
-  else if(k < 150) base = {p:8, c:10, f:5, fi:2};
-  for(const key in DISH_NUTRI){
-    if(name.includes(key)){ const d = DISH_NUTRI[key]; base = {p:d.p, c:d.c, f:d.f, fi:d.fi}; break; }
-  }
-  const ratio = 2.5;
-  const totalK = k > 200 ? k : Math.round(k * ratio);
-  return {k:totalK, p:r1(base.p*ratio), c:r1(base.c*ratio), f:r1(base.f*ratio), fi:r1(base.fi*ratio), portion:'约 250g'};
+  // 3. 默认估算
+  const base = {k:150,p:8,c:18,f:6,fi:2};
+  return {
+    k: Math.round(base.k * ratio),
+    p: r1(base.p * ratio),
+    c: r1(base.c * ratio),
+    f: r1(base.f * ratio),
+    fi: r1(base.fi * ratio)
+  };
 }
 
 function editDishResult(name, k, p, c, f, fi){
@@ -869,10 +828,13 @@ function editDishResult(name, k, p, c, f, fi){
     document.getElementById('foodFiber').value = fi;
     renderQuick();
     document.getElementById('modal').classList.add('show');
+    document.getElementById('uploadBox').innerHTML =
+      `<div class="ico">📷</div><div class="t">点击选图片 / 拍照</div><div class="s">支持相册和拍照，图片只在本机使用</div>`;
+    document.getElementById('imgResult').innerHTML = '';
   }, 100);
 }
 
-/* ========== 做饭 ========== */
+/* ============ 做饭 ============ */
 function addIng(){
   const inp = document.getElementById('ingInput');
   const v = inp.value.trim();
@@ -887,11 +849,6 @@ function renderIngs(){
   wrap.innerHTML = '';
   if(!ingList.length){ wrap.innerHTML = '<span style="font-size:11px;color:#aaa">还没有添加食材</span>'; return; }
   ingList.forEach(n=>{ wrap.innerHTML += `<span class="ing-tag">${esc(n)}<span onclick="delIng('${esc(n)}')">✕</span></span>`; });
-}
-function findFood(name){
-  if(FOOD_DB[name]) return FOOD_DB[name];
-  for(const k in FOOD_DB){ if(name.includes(k) || k.includes(name)) return FOOD_DB[k]; }
-  return null;
 }
 
 function genRecipes(){
@@ -990,7 +947,7 @@ function pickMealByTime(){
   return 'snack';
 }
 
-/* ========== 添加/编辑 ========== */
+/* ============ 添加/编辑 ============ */
 function openSheet(meal){
   if(meal) currentMeal = meal;
   editRef = null;
@@ -1002,7 +959,6 @@ function openSheet(meal){
   renderQuick();
   document.getElementById('modal').classList.add('show');
 }
-
 function editFood(meal, idx){
   const f = data.meals[meal][idx];
   if(!f) return;
@@ -1019,7 +975,6 @@ function editFood(meal, idx){
   renderQuick();
   document.getElementById('modal').classList.add('show');
 }
-
 function renderQuick(){
   const q = document.getElementById('quick');
   q.innerHTML = '';
@@ -1037,9 +992,7 @@ function renderQuick(){
     q.appendChild(b);
   });
 }
-
 function closeSheet(){ document.getElementById('modal').classList.remove('show'); }
-
 function saveFood(){
   const n = document.getElementById('foodName').value.trim();
   if(!n){ alert('请输入食物名称'); return; }
@@ -1056,13 +1009,11 @@ function saveFood(){
   saveDay(); render(); closeSheet();
   showMealResult(currentMeal);
 }
-
 function delFood(meal, idx){
   if(!confirm('删除这条记录？')) return;
   data.meals[meal].splice(idx,1);
   saveDay(); render();
 }
-
 function showMealResult(meal, extra){
   const t = totals();
   const left = TARGET.kMax - t.k;
@@ -1078,7 +1029,6 @@ function showMealResult(meal, extra){
   else msg += `\n🐾 还有空间，继续保持`;
   setTimeout(()=>alert(msg), 120);
 }
-
 function resetDay(){
   if(confirm('确定清空今天所有记录吗？')){
     data = emptyDay();
@@ -1086,27 +1036,21 @@ function resetDay(){
   }
 }
 
-/* ========== 历史 ========== */
+/* ============ 历史 ============ */
 function renderHistory(){
-  // 确保今天在历史里
   history[todayKey()] = JSON.parse(JSON.stringify(data.meals));
   saveHistory();
-
   const keys = Object.keys(history).sort((a,b)=>{
     const [ay,am,ad] = a.split('-').map(Number);
     const [by,bm,bd] = b.split('-').map(Number);
     return (by*10000+bm*100+bd) - (ay*10000+am*100+ad);
   });
-
   const list = document.getElementById('historyList');
   list.innerHTML = '';
-
   if(!keys.length){
     list.innerHTML = '<div class="card"><div class="empty">还没有历史记录</div></div>';
     return;
   }
-
-  // 最近 7 天统计
   const recent = keys.slice(0,7);
   let sumK = 0, sumP = 0, cnt = 0;
   recent.forEach(k=>{
@@ -1123,7 +1067,6 @@ function renderHistory(){
     let cls = '';
     if(t.k > TARGET.kMax) cls = 'over';
     else if(t.k > 0 && t.k < TARGET.kMin) cls = 'low';
-
     let mealsHTML = '';
     MEALS.forEach(m=>{
       const items = meals[m.key]||[];
@@ -1134,7 +1077,6 @@ function renderHistory(){
       });
       mealsHTML += '</div>';
     });
-
     list.innerHTML += `
       <div class="hist-day" id="hist-${k}">
         <div class="hist-head" onclick="toggleHist('${k}')">
@@ -1154,15 +1096,13 @@ function renderHistory(){
       </div>`;
   });
 }
-
 function toggleHist(k){
   const el = document.getElementById('hist-'+k);
   if(el) el.classList.toggle('open');
 }
-
 function exportData(){
   const backup = {
-    version: 2,
+    version: 3,
     exportAt: new Date().toISOString(),
     today: data,
     history: history,
@@ -1178,7 +1118,6 @@ function exportData(){
   a.click();
   URL.revokeObjectURL(url);
 }
-
 function importData(){
   const inp = document.createElement('input');
   inp.type = 'file';
@@ -1213,9 +1152,8 @@ function importData(){
   inp.click();
 }
 
-/* ========== 体重 ========== */
+/* ============ 体重 ============ */
 function renderWeight(){
-  // 当前体重
   let cur = null;
   if(weights.length){
     const sorted = [...weights].sort((a,b)=>b.date.localeCompare(a.date));
@@ -1223,11 +1161,10 @@ function renderWeight(){
   }
   document.getElementById('curWeight').textContent = cur ? cur.kg : '--';
   document.getElementById('goalWeight').textContent = goalWeight;
-
   const bmiNote = document.getElementById('bmiNote');
   const curBMI = document.getElementById('curBMI');
   if(cur){
-    const bmi = cur.kg / Math.pow(HEIGHT_CM/100, 2);
+    const bmi = cur.kg / Math.pow(160/100, 2);
     curBMI.textContent = bmi.toFixed(1);
     let tag = '';
     if(bmi < 18.5) tag = '<span class="bmi-tag bmi-low">偏瘦</span>';
@@ -1239,7 +1176,6 @@ function renderWeight(){
     bmiNote.textContent = '身高 160cm，记录体重后显示 BMI';
   }
 
-  // 趋势图
   const chart = document.getElementById('chart');
   const sorted = [...weights].sort((a,b)=>a.date.localeCompare(b.date)).slice(-30);
   if(sorted.length < 2){
@@ -1257,15 +1193,12 @@ function renderWeight(){
     });
     const path = points.map((p,i)=> (i===0?'M':'L') + p.x.toFixed(1) + ' ' + p.y.toFixed(1)).join(' ');
     const area = path + ` L ${points[points.length-1].x} ${H-padY} L ${points[0].x} ${H-padY} Z`;
-
-    // 目标线
     let goalLine = '';
     if(goalWeight >= min && goalWeight <= max){
       const gy = H - padY - ((goalWeight - min)/(max-min)) * (H - padY*2);
       goalLine = `<line x1="${padX}" y1="${gy}" x2="${W-padX}" y2="${gy}" stroke="#4a8f4a" stroke-width="1" stroke-dasharray="4 3"/>
                   <text x="${W-padX-2}" y="${gy-3}" font-size="8" fill="#4a8f4a" text-anchor="end">目标 ${goalWeight}kg</text>`;
     }
-
     chart.innerHTML = `
       <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">
         <path d="${area}" fill="#222" opacity="0.06"/>
@@ -1277,7 +1210,6 @@ function renderWeight(){
       </svg>`;
   }
 
-  // 体重列表
   const wl = document.getElementById('weightList');
   wl.innerHTML = '';
   if(!weights.length){
@@ -1285,7 +1217,6 @@ function renderWeight(){
   }else{
     const sortedDesc = [...weights].sort((a,b)=>b.date.localeCompare(a.date));
     sortedDesc.forEach((w, i)=>{
-      // 与上一次（时间上更早的一次）比较
       const older = sortedDesc[i+1];
       let diffHTML = '';
       if(older){
@@ -1304,7 +1235,6 @@ function renderWeight(){
     });
   }
 }
-
 function openWeightSheet(){
   const latest = weights.length ? [...weights].sort((a,b)=>b.date.localeCompare(a.date))[0].kg : '';
   document.getElementById('weightVal').value = latest;
@@ -1313,13 +1243,11 @@ function openWeightSheet(){
   document.getElementById('weightModal').classList.add('show');
 }
 function closeWeightSheet(){ document.getElementById('weightModal').classList.remove('show'); }
-
 function saveWeight(){
   const kg = parseFloat(document.getElementById('weightVal').value);
   const dateVal = document.getElementById('weightDate').value || new Date().toISOString().slice(0,10);
   const note = document.getElementById('weightNote').value.trim();
   if(!kg || kg < 20 || kg > 200){ alert('请输入合理体重'); return; }
-  // 日期存成 YYYY-M-D 格式保持一致
   const [y,m,d] = dateVal.split('-').map(Number);
   const key = `${y}-${m}-${d}`;
   const existing = weights.findIndex(w=>w.date === key);
@@ -1334,14 +1262,12 @@ function saveWeight(){
   renderWeight();
   adjustTargetByWeight();
 }
-
 function delWeight(date){
   if(!confirm('删除这条体重记录？')) return;
   weights = weights.filter(w=>w.date !== date);
   saveWeights();
   renderWeight();
 }
-
 function saveGoal(){
   const v = parseFloat(document.getElementById('goalInput').value);
   if(!v || v < 30 || v > 100){ alert('请输入合理目标体重'); return; }
@@ -1349,8 +1275,6 @@ function saveGoal(){
   localStorage.setItem('borderCollieGoalWeight', v);
   renderWeight();
 }
-
-/* 根据体重变化提示调整热量 */
 function adjustTargetByWeight(){
   if(weights.length < 2) return;
   const sorted = [...weights].sort((a,b)=>a.date.localeCompare(b.date));
@@ -1359,10 +1283,8 @@ function adjustTargetByWeight(){
   const diff = latest.kg - prev.kg;
   const daysBetween = Math.max(1, Math.round((new Date(latest.date) - new Date(prev.date))/(1000*60*60*24)));
   const weeklyChange = diff / daysBetween * 7;
-
   const cur = latest.kg;
   const dist = cur - goalWeight;
-
   let msg = '';
   if(dist <= 0){
     msg = `已到目标体重 ${goalWeight}kg 或更低啦！边牧为你骄傲 🐾\n可以保持现在的热量目标（1000-1200 kcal）维持。`;
@@ -1376,7 +1298,7 @@ function adjustTargetByWeight(){
   setTimeout(()=>alert(msg), 200);
 }
 
-/* ========== Tab 切换 ========== */
+/* ============ Tab ============ */
 function switchTab(tab, btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+tab).classList.add('active');
@@ -1392,11 +1314,9 @@ function switchTab(tab, btn){
   if(tab === 'weight') renderWeight();
 }
 
-/* ========== 跨天 ========== */
 setInterval(()=>{
   const fresh = loadDay();
   if(fresh.date !== data.date){
-    // 先把旧的一天存进历史
     history[data.date] = JSON.parse(JSON.stringify(data.meals));
     saveHistory();
     data = fresh;
@@ -1404,7 +1324,6 @@ setInterval(()=>{
   }
 }, 60000);
 
-/* ========== 初始化 ========== */
 (function init(){
   if(currentLoc) document.getElementById('addr').textContent = currentLoc;
   document.getElementById('goalInput').value = goalWeight;
