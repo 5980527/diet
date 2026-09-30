@@ -306,11 +306,11 @@ header p{font-size:11px;color:#888;margin-top:2px}
   <div class="card">
     <h2><span class="dot"></span>我有这些食材</h2>
     <div class="ing-input">
-      <input id="ingInput" placeholder="输入食材，如：鸡胸肉" onkeydown="if(event.key==='Enter')addIng()">
+      <input id="ingInput" placeholder="如：鸡胸肉,西兰花,番茄（可一次多个）" onkeydown="if(event.key==='Enter')addIng()">
       <button onclick="addIng()">添加</button>
     </div>
     <div class="ing-tags" id="ingTags"></div>
-    <p class="hint">默认避开：葱、海鲜。会按食材拆成 1-5 道低脂菜。</p>
+    <p class="hint">默认避开：葱、海鲜。一次可输入多个食材，用逗号/空格分隔。会拆成 1-5 道低脂菜。</p>
     <button class="add-btn" style="width:100%;padding:11px" onclick="genRecipes()">🐾 生成低脂菜谱</button>
   </div>
   <div id="recipeList"></div>
@@ -417,7 +417,8 @@ const FOOD_DB = {
   '糙米':{k:348,p:8,c:73,f:3,fi:3.5},'米饭':{k:116,p:2,c:25,f:0.3,fi:0.3},
   '红薯':{k:86,p:1.6,c:20,f:0.1,fi:3},'西兰花':{k:34,p:3,c:7,f:0.4,fi:2.6},
   '菠菜':{k:23,p:2.9,c:3.6,f:0.4,fi:2.2},'生菜':{k:15,p:1.4,c:2.9,f:0.2,fi:1.3},
-  '番茄':{k:18,p:0.9,c:3.9,f:0.2,fi:1.2},'黄瓜':{k:15,p:0.7,c:3.6,f:0.1,fi:0.5},
+  '番茄':{k:18,p:0.9,c:3.9,f:0.2,fi:1.2},'西红柿':{k:18,p:0.9,c:3.9,f:0.2,fi:1.2},
+  '黄瓜':{k:15,p:0.7,c:3.6,f:0.1,fi:0.5},
   '胡萝卜':{k:41,p:0.9,c:10,f:0.2,fi:2.8},'土豆':{k:77,p:2,c:17,f:0.1,fi:2.2},
   '玉米':{k:86,p:3.3,c:19,f:1.2,fi:2.4},'蘑菇':{k:22,p:3.1,c:3.3,f:0.3,fi:1},
   '青椒':{k:20,p:0.9,c:4.6,f:0.2,fi:1.7},'洋葱':{k:40,p:1.1,c:9,f:0.1,fi:1.7},
@@ -444,6 +445,9 @@ const DISH_PRESET = {
   '烤':{k:350,p:24,c:18,f:18,fi:1,portion:250},
   '炒':{k:320,p:16,c:22,f:18,fi:2,portion:250}
 };
+
+/* 忌口关键词：命中就自动跳过 */
+const AVOID_WORDS = ['葱','海鲜','蟹','鱼','贝','鱿鱼','生蚝','蛤','螺','扇贝','鲍鱼','海参','海带','紫菜','海苔'];
 
 const TARGET = {kMin:1000, kMax:1200, p:70, c:130, f:35, fi:25};
 const MEALS = [
@@ -565,6 +569,9 @@ function findFood(name){
     if(name.includes(k) || k.includes(name)) return FOOD_DB[k];
   }
   return null;
+}
+function isAvoid(name){
+  return AVOID_WORDS.some(w=>name.includes(w));
 }
 
 function render(){
@@ -820,17 +827,23 @@ function editDishResult(name, k, p, c, f, fi){
 }
 
 /* ============ 做饭 ============ */
-  function addIng(){
+/* 支持逗号/顿号/空格/换行拆分；自动过滤忌口 */
+function addIng(){
   const inp = document.getElementById('ingInput');
   const v = inp.value.trim();
   if(!v) return;
-  // 支持逗号、顿号、空格、换行分隔
   const parts = v.split(/[，,、\s\n]+/).map(s=>s.trim()).filter(Boolean);
+  const skipped = [];
   parts.forEach(p=>{
-    if(p && !ingList.includes(p)) ingList.push(p);
+    if(!p) return;
+    if(isAvoid(p)){ skipped.push(p); return; }
+    if(!ingList.includes(p)) ingList.push(p);
   });
   inp.value = '';
   renderIngs();
+  if(skipped.length){
+    setTimeout(()=>alert('已自动跳过（忌口）：' + skipped.join('、')), 80);
+  }
 }
 function delIng(name){ ingList = ingList.filter(x=>x!==name); renderIngs(); }
 function renderIngs(){
@@ -861,11 +874,11 @@ function genRecipes(){
   });
 }
 
-/* 核心：按食材拆成 1-5 道菜 */
+/* 核心：按食材拆成 1-5 道菜，每道只用 1-3 种食材 */
 function buildRecipes(ings){
-  const proteinKeys = ['鸡胸肉','鸡腿肉','鸡蛋','牛肉','猪瘦肉','豆腐','豆干','毛豆','鹰嘴豆','牛奶','无糖酸奶'];
+  const proteinKeys = ['鸡胸肉','鸡腿肉','鸡蛋','牛肉','猪瘦肉','豆腐','豆干','毛豆','鹰嘴豆','牛奶','无糖酸奶','蛋白粉'];
   const carbKeys    = ['燕麦','糙米','米饭','红薯','土豆','玉米','南瓜'];
-  const vegKeys     = ['西兰花','菠菜','生菜','番茄','黄瓜','胡萝卜','蘑菇','青椒','洋葱','西葫芦','木耳','魔芋'];
+  const vegKeys     = ['西兰花','菠菜','生菜','番茄','西红柿','黄瓜','胡萝卜','蘑菇','青椒','洋葱','西葫芦','木耳','魔芋'];
 
   const proteins = ings.filter(i=>proteinKeys.some(k=>i.includes(k)||k.includes(i)));
   const carbs    = ings.filter(i=>carbKeys.some(k=>i.includes(k)||k.includes(i)));
@@ -876,7 +889,7 @@ function buildRecipes(ings){
   const out = [];
   const used = new Set();
 
-  // 1. 第一道：主蛋白 + 一种蔬菜
+  // 1. 蛋白 + 一种蔬菜（主菜）
   const p1 = proteins[0];
   const v1 = allVegs.find(v=>!used.has(v));
   if(p1){
@@ -890,22 +903,21 @@ function buildRecipes(ings){
     used.add(p1); if(v1) used.add(v1);
   }
 
-  // 2. 第二道：另一种蛋白做成沙拉
+  // 2. 第二种蛋白做成沙拉
   const p2 = proteins.find(p=>!used.has(p));
   const v2 = allVegs.find(v=>!used.has(v));
-  if(p2 || (proteins.length === 0 && !used.has('鸡蛋'))){
-    const useName = p2 || '鸡蛋';
-    out.push(makeRecipe(`${useName}轻食沙拉`,
-      v2 ? [{n:useName,g:100},{n:v2,g:120},{n:'无糖酸奶',g:30}]
-         : [{n:useName,g:100},{n:'无糖酸奶',g:30}],
+  if(p2){
+    out.push(makeRecipe(`${p2}轻食沙拉`,
+      v2 ? [{n:p2,g:100},{n:v2,g:120},{n:'无糖酸奶',g:30}]
+         : [{n:p2,g:100},{n:'无糖酸奶',g:30}],
       ['蔬菜洗净撕成小块铺底',
-       `${useName}煮熟或煎熟后切块放在蔬菜上`,
+       `${p2}煮熟或煎熟后切块放在蔬菜上`,
        '用无糖酸奶+少许盐+黑胡椒调成酱汁',
        '淋上拌匀即可，不放葱']));
-    used.add(useName); if(v2) used.add(v2);
+    used.add(p2); if(v2) used.add(v2);
   }
 
-  // 3. 第三道：剩下蔬菜炒一盘
+  // 3. 剩下的蔬菜清炒
   const vegLeft = allVegs.filter(v=>!used.has(v));
   if(vegLeft.length >= 1){
     const v3 = vegLeft[0];
@@ -920,7 +932,7 @@ function buildRecipes(ings){
     used.add(v3); if(v4) used.add(v4);
   }
 
-  // 4. 第四道：主食
+  // 4. 主食
   const c1 = carbs.find(c=>!used.has(c));
   if(c1){
     out.push(makeRecipe(`${c1}主食`,
@@ -931,7 +943,7 @@ function buildRecipes(ings){
     used.add(c1);
   }
 
-  // 5. 第五道：如果还有鸡蛋没用，蒸个蛋
+  // 5. 还有鸡蛋的话，蒸蛋
   if(!used.has('鸡蛋') && !proteins.includes('鸡蛋')){
     const v5 = allVegs.find(v=>!used.has(v));
     out.push(makeRecipe(v5 ? `${v5}蒸蛋` : '水蒸蛋',
@@ -943,7 +955,6 @@ function buildRecipes(ings){
     used.add('鸡蛋'); if(v5) used.add(v5);
   }
 
-  // 过滤掉超过 500 kcal，最多返回 5 道
   return out
     .filter(r=> r.k > 0 && r.k <= 550)
     .sort((a,b)=>a.k-b.k)
