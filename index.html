@@ -820,11 +820,15 @@ function editDishResult(name, k, p, c, f, fi){
 }
 
 /* ============ 做饭 ============ */
-function addIng(){
+  function addIng(){
   const inp = document.getElementById('ingInput');
   const v = inp.value.trim();
   if(!v) return;
-  if(!ingList.includes(v)) ingList.push(v);
+  // 支持逗号、顿号、空格、换行分隔
+  const parts = v.split(/[，,、\s\n]+/).map(s=>s.trim()).filter(Boolean);
+  parts.forEach(p=>{
+    if(p && !ingList.includes(p)) ingList.push(p);
+  });
   inp.value = '';
   renderIngs();
 }
