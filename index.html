@@ -310,7 +310,7 @@ header p{font-size:11px;color:#888;margin-top:2px}
       <button onclick="addIng()">添加</button>
     </div>
     <div class="ing-tags" id="ingTags"></div>
-    <p class="hint">默认避开：葱、海鲜。每餐目标 250-500 kcal。</p>
+    <p class="hint">默认避开：葱、海鲜。会按食材拆成 1-5 道低脂菜。</p>
     <button class="add-btn" style="width:100%;padding:11px" onclick="genRecipes()">🐾 生成低脂菜谱</button>
   </div>
   <div id="recipeList"></div>
@@ -407,9 +407,6 @@ header p{font-size:11px;color:#888;margin-top:2px}
 </div>
 
 <script>
-/* ============================================================
-   本地营养数据库：每100g
-============================================================ */
 const FOOD_DB = {
   '鸡胸肉':{k:133,p:24,c:0,f:3,fi:0},'鸡腿肉':{k:181,p:19,c:0,f:11,fi:0},
   '鸡蛋':{k:143,p:13,c:1,f:9,fi:0},'牛肉':{k:180,p:20,c:0,f:11,fi:0},
@@ -426,12 +423,9 @@ const FOOD_DB = {
   '青椒':{k:20,p:0.9,c:4.6,f:0.2,fi:1.7},'洋葱':{k:40,p:1.1,c:9,f:0.1,fi:1.7},
   '西葫芦':{k:17,p:1.2,c:3.1,f:0.3,fi:1},'南瓜':{k:26,p:1,c:6.5,f:0.1,fi:0.5},
   '木耳':{k:25,p:1.5,c:6,f:0.2,fi:2.6},'魔芋':{k:7,p:0.1,c:3,f:0,fi:2.7},
-  '橄榄油':{k:884,p:0,c:0,f:100,fi:0},'沙拉':{k:80,p:6,c:8,f:3,fi:3},
-  '面':{k:110,p:4,c:22,f:0.5,fi:1},'饭':{k:116,p:2,c:25,f:0.3,fi:0.3},
-  '粥':{k:46,p:1.1,c:10,f:0.3,fi:0.5},'汤':{k:30,p:2,c:4,f:1,fi:1}
+  '橄榄油':{k:884,p:0,c:0,f:100,fi:0}
 };
 
-/* 菜名关键词 → 每份(约250g)的估算值 */
 const DISH_PRESET = {
   '沙拉':{k:280,p:20,c:15,f:8,fi:5,portion:250},
   '鸡胸':{k:280,p:30,c:5,f:6,fi:1,portion:200},
@@ -666,7 +660,6 @@ function updateDogMsg(t){
   }
 }
 
-/* 外卖列表 */
 function renderTakeout(){
   const list = [...TAKEOUTS].sort((a,b)=>a.k-b.k);
   const wrap = document.getElementById('takeoutList');
@@ -714,7 +707,6 @@ function manualAddr(){
   }
 }
 
-/* ============ 图片 + 餐名识别 ============ */
 function onPickImage(e){
   const file = e.target.files[0];
   if(!file) return;
@@ -722,7 +714,6 @@ function onPickImage(e){
   reader.onload = ev=>{
     const img = new Image();
     img.onload = ()=>{
-      // 压缩
       let {width, height} = img;
       const maxSize = 800;
       if(width > height && width > maxSize){ height = height*maxSize/width; width = maxSize; }
@@ -733,11 +724,9 @@ function onPickImage(e){
       ctx.drawImage(img, 0, 0, width, height);
       const dataUrl = canvas.toDataURL('image/jpeg', 0.75);
 
-      // 显示图片
       document.getElementById('uploadBox').innerHTML =
         `<img src="${dataUrl}" alt="餐食照片"><div class="s" style="margin-top:8px">已选择图片，请填写餐名和份量</div>`;
 
-      // 弹出输入
       const dishName = prompt('请输入这道菜的名字（如：鸡胸肉沙拉、番茄鸡蛋盖饭）', '');
       if(!dishName || !dishName.trim()){
         document.getElementById('uploadBox').innerHTML =
@@ -776,7 +765,6 @@ function onPickImage(e){
 
 function estimateLocal(name, grams){
   const ratio = grams / 100;
-  // 1. 命中食物数据库
   const hit = findFood(name);
   if(hit){
     return {
@@ -787,11 +775,9 @@ function estimateLocal(name, grams){
       fi: r1(hit.fi * ratio)
     };
   }
-  // 2. 从菜名关键词匹配
   for(const key in DISH_PRESET){
     if(name.includes(key)){
       const d = DISH_PRESET[key];
-      // 预设是按参考份量给的，这里按实际克数缩放
       const scale = grams / d.portion;
       return {
         k: Math.round(d.k * scale),
@@ -802,7 +788,6 @@ function estimateLocal(name, grams){
       };
     }
   }
-  // 3. 默认估算
   const base = {k:150,p:8,c:18,f:6,fi:2};
   return {
     k: Math.round(base.k * ratio),
@@ -855,9 +840,9 @@ function genRecipes(){
   if(ingList.length === 0){ alert('先添加至少一样食材吧～'); return; }
   const recipes = buildRecipes(ingList);
   const wrap = document.getElementById('recipeList');
-  wrap.innerHTML = '<p class="section-title">🐾 边牧为你搭配的低脂菜谱</p>';
+  wrap.innerHTML = `<p class="section-title">🐾 边牧为你搭配的低脂菜谱（${recipes.length} 道）</p>`;
   if(!recipes.length){
-    wrap.innerHTML += '<div class="card"><div class="empty">暂时配不出 250-500 kcal 的菜谱，再多加几样食材试试</div></div>';
+    wrap.innerHTML += '<div class="card"><div class="empty">暂时配不出合适的菜谱，再多加几样食材试试</div></div>';
     return;
   }
   recipes.forEach(r=>{
@@ -872,53 +857,93 @@ function genRecipes(){
   });
 }
 
+/* 核心：按食材拆成 1-5 道菜 */
 function buildRecipes(ings){
   const proteinKeys = ['鸡胸肉','鸡腿肉','鸡蛋','牛肉','猪瘦肉','豆腐','豆干','毛豆','鹰嘴豆','牛奶','无糖酸奶'];
   const carbKeys    = ['燕麦','糙米','米饭','红薯','土豆','玉米','南瓜'];
   const vegKeys     = ['西兰花','菠菜','生菜','番茄','黄瓜','胡萝卜','蘑菇','青椒','洋葱','西葫芦','木耳','魔芋'];
+
   const proteins = ings.filter(i=>proteinKeys.some(k=>i.includes(k)||k.includes(i)));
   const carbs    = ings.filter(i=>carbKeys.some(k=>i.includes(k)||k.includes(i)));
   const vegs     = ings.filter(i=>vegKeys.some(k=>i.includes(k)||k.includes(i)));
+  const others   = ings.filter(i=>!proteins.includes(i) && !carbs.includes(i) && !vegs.includes(i));
+  const allVegs  = [...vegs, ...others];
+
   const out = [];
-  const mp = proteins[0] || '鸡蛋';
-  const mv = vegs[0] || '西兰花';
+  const used = new Set();
 
-  out.push(makeRecipe(`${mp}炒${mv}`,
-    [{n:mp,g:120},{n:mv,g:150},{n:'橄榄油',g:5}],
-    ['食材洗净切块，肉提前用少许盐和黑胡椒腌10分钟',
-     '不粘锅少油，先煎蛋白类食材至变色',
-     `加入${mv}翻炒，加少量水焖2分钟`,
-     '出锅前撒少许盐和黑胡椒调味（不放葱）']));
-
-  if(carbs.length){
-    const mc = carbs[0];
-    out.push(makeRecipe(`${mp}${mc}碗`,
-      [{n:mc,g:80},{n:mp,g:100},{n:vegs[1]||'番茄',g:100}],
-      [`${mc}提前煮熟/蒸熟备用`, `${mp}切块煎熟`, `加入切好的蔬菜翻炒`, `和${mc}一起装碗，淋少许生抽即可`]));
+  // 1. 第一道：主蛋白 + 一种蔬菜
+  const p1 = proteins[0];
+  const v1 = allVegs.find(v=>!used.has(v));
+  if(p1){
+    out.push(makeRecipe(`${p1}炒${v1||'时蔬'}`,
+      v1 ? [{n:p1,g:120},{n:v1,g:150},{n:'橄榄油',g:5}]
+         : [{n:p1,g:120},{n:'橄榄油',g:5}],
+      ['食材洗净切块，肉提前用少许盐和黑胡椒腌10分钟',
+       '不粘锅少油，先煎蛋白类食材至变色',
+       v1 ? `加入${v1}翻炒，加少量水焖2分钟` : '煎熟即可',
+       '出锅前撒盐和黑胡椒调味（不放葱）']));
+    used.add(p1); if(v1) used.add(v1);
   }
 
-  out.push(makeRecipe(`${mp}蔬菜沙拉`,
-    [{n:mp,g:100},{n:vegs[0]||'生菜',g:100},{n:vegs[1]||'黄瓜',g:80},{n:'无糖酸奶',g:30}],
-    ['蔬菜洗净撕成小块铺底', `${mp}煮熟或煎熟后切块放在蔬菜上`,
-     '用无糖酸奶+少许盐+黑胡椒调成酱汁', '淋上拌匀即可，不放葱']));
-
-  if(vegs.length >= 2){
-    out.push(makeRecipe(`${vegs[0]}${vegs[1]}蒸蛋`,
-      [{n:'鸡蛋',g:100},{n:vegs[0],g:80},{n:vegs[1],g:80}],
-      ['鸡蛋打散加1.5倍温水，过筛去泡', '蔬菜切碎放入蛋液',
-       '盖上保鲜膜蒸10-12分钟', '出锅淋几滴生抽和香油']));
+  // 2. 第二道：另一种蛋白做成沙拉
+  const p2 = proteins.find(p=>!used.has(p));
+  const v2 = allVegs.find(v=>!used.has(v));
+  if(p2 || (proteins.length === 0 && !used.has('鸡蛋'))){
+    const useName = p2 || '鸡蛋';
+    out.push(makeRecipe(`${useName}轻食沙拉`,
+      v2 ? [{n:useName,g:100},{n:v2,g:120},{n:'无糖酸奶',g:30}]
+         : [{n:useName,g:100},{n:'无糖酸奶',g:30}],
+      ['蔬菜洗净撕成小块铺底',
+       `${useName}煮熟或煎熟后切块放在蔬菜上`,
+       '用无糖酸奶+少许盐+黑胡椒调成酱汁',
+       '淋上拌匀即可，不放葱']));
+    used.add(useName); if(v2) used.add(v2);
   }
 
-  if(carbs.includes('燕麦') || ings.some(i=>i.includes('燕麦'))){
-    out.push(makeRecipe('酸奶燕麦碗',
-      [{n:'燕麦',g:40},{n:'无糖酸奶',g:150},{n:'牛奶',g:50}],
-      ['燕麦用少量牛奶泡软', '倒入无糖酸奶拌匀',
-       '可加少量水果或坚果（不在忌口内）', '冷藏10分钟口感更好']));
+  // 3. 第三道：剩下蔬菜炒一盘
+  const vegLeft = allVegs.filter(v=>!used.has(v));
+  if(vegLeft.length >= 1){
+    const v3 = vegLeft[0];
+    const v4 = vegLeft[1];
+    out.push(makeRecipe(v4 ? `清炒${v3}${v4}` : `清炒${v3}`,
+      v4 ? [{n:v3,g:150},{n:v4,g:100},{n:'橄榄油',g:5}]
+         : [{n:v3,g:200},{n:'橄榄油',g:5}],
+      ['蔬菜洗净切片',
+       '不粘锅少油烧热',
+       '下锅翻炒，加少量水焖2分钟',
+       '出锅前撒盐和黑胡椒调味（不放葱）']));
+    used.add(v3); if(v4) used.add(v4);
   }
 
-  let filtered = out.filter(r=> r.k >= 250 && r.k <= 500);
-  if(filtered.length < 2) filtered = out.filter(r=> r.k >= 200 && r.k <= 550);
-  return filtered.sort((a,b)=>a.k-b.k).slice(0,4);
+  // 4. 第四道：主食
+  const c1 = carbs.find(c=>!used.has(c));
+  if(c1){
+    out.push(makeRecipe(`${c1}主食`,
+      [{n:c1,g:100}],
+      [`${c1}提前蒸熟/煮熟`,
+       '可以搭配上面的菜一起吃',
+       '分量控制在一小碗，避免碳水过多']));
+    used.add(c1);
+  }
+
+  // 5. 第五道：如果还有鸡蛋没用，蒸个蛋
+  if(!used.has('鸡蛋') && !proteins.includes('鸡蛋')){
+    const v5 = allVegs.find(v=>!used.has(v));
+    out.push(makeRecipe(v5 ? `${v5}蒸蛋` : '水蒸蛋',
+      v5 ? [{n:'鸡蛋',g:100},{n:v5,g:80}] : [{n:'鸡蛋',g:100}],
+      ['鸡蛋打散加1.5倍温水，过筛去泡',
+       v5 ? `${v5}切碎放入蛋液` : '撇去浮沫',
+       '盖上保鲜膜蒸10-12分钟',
+       '出锅淋几滴生抽和香油']));
+    used.add('鸡蛋'); if(v5) used.add(v5);
+  }
+
+  // 过滤掉超过 500 kcal，最多返回 5 道
+  return out
+    .filter(r=> r.k > 0 && r.k <= 550)
+    .sort((a,b)=>a.k-b.k)
+    .slice(0,5);
 }
 
 function makeRecipe(name, ingRows, steps){
@@ -947,7 +972,6 @@ function pickMealByTime(){
   return 'snack';
 }
 
-/* ============ 添加/编辑 ============ */
 function openSheet(meal){
   if(meal) currentMeal = meal;
   editRef = null;
@@ -1036,7 +1060,6 @@ function resetDay(){
   }
 }
 
-/* ============ 历史 ============ */
 function renderHistory(){
   history[todayKey()] = JSON.parse(JSON.stringify(data.meals));
   saveHistory();
@@ -1140,9 +1163,7 @@ function importData(){
         localStorage.setItem('borderCollieGoalWeight', goalWeight);
         if(currentLoc) localStorage.setItem('borderCollieLoc', currentLoc);
         alert('导入成功！');
-        render();
-        renderHistory();
-        renderWeight();
+        render(); renderHistory(); renderWeight();
       }catch(err){
         alert('导入失败：文件格式不正确');
       }
@@ -1152,7 +1173,6 @@ function importData(){
   inp.click();
 }
 
-/* ============ 体重 ============ */
 function renderWeight(){
   let cur = null;
   if(weights.length){
@@ -1289,16 +1309,15 @@ function adjustTargetByWeight(){
   if(dist <= 0){
     msg = `已到目标体重 ${goalWeight}kg 或更低啦！边牧为你骄傲 🐾\n可以保持现在的热量目标（1000-1200 kcal）维持。`;
   }else if(weeklyChange < -0.8){
-    msg = `最近体重下降偏快（每周约 ${weeklyChange.toFixed(2)}kg）。\n为了让身体不进入饥饿模式，可以适当增加 100 kcal 摄入，多吃点蛋白质。`;
+    msg = `最近体重下降偏快（每周约 ${weeklyChange.toFixed(2)}kg）。\n可以适当增加 100 kcal 摄入，多吃点蛋白质。`;
   }else if(weeklyChange > 0.2){
-    msg = `最近体重略有上升（每周约 +${weeklyChange.toFixed(2)}kg）。\n可以适当减少 50-100 kcal 摄入，或增加一点活动。`;
+    msg = `最近体重略有上升（每周约 +${weeklyChange.toFixed(2)}kg）。\n可以适当减少 50-100 kcal 摄入。`;
   }else{
     msg = `体重变化平稳（每周约 ${weeklyChange.toFixed(2)}kg），距目标还有 ${dist.toFixed(1)}kg。\n继续保持当前节奏就好 🐾`;
   }
   setTimeout(()=>alert(msg), 200);
 }
 
-/* ============ Tab ============ */
 function switchTab(tab, btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+tab).classList.add('active');
